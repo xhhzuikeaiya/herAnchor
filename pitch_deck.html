@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShadowSpeak 影说 — Pitch Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',-apple-system,sans-serif;background:#050810;color:#fff;overflow:hidden;height:100vh;width:100vw;}
+.slide{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;opacity:0;transform:translateX(80px);transition:all 0.55s cubic-bezier(0.4,0,0.2,1);pointer-events:none;}
+.slide.active{opacity:1;transform:translateX(0);pointer-events:all;}
+.slide.exit{opacity:0;transform:translateX(-80px);}
+.nav{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:14px;z-index:100;}
+.nav-btn{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.8);padding:9px 22px;border-radius:999px;cursor:pointer;font-size:14px;backdrop-filter:blur(10px);transition:all 0.2s;font-family:inherit;}
+.nav-btn:hover{background:rgba(255,255,255,0.16);}
+.dots{display:flex;gap:6px;align-items:center;}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.25);transition:all 0.3s;cursor:pointer;}
+.dot.active{width:22px;border-radius:3px;background:#e8452a;}
+.counter{position:fixed;top:22px;right:30px;font-size:13px;color:rgba(255,255,255,0.35);z-index:100;font-weight:600;}
+.logo{position:fixed;top:22px;left:30px;font-size:15px;font-weight:800;z-index:100;color:rgba(255,255,255,0.55);letter-spacing:0.5px;}
+.logo span{color:#e8452a;}
+
+/* ── SLIDE INNER ── */
+.inner{width:100%;max-width:1080px;padding:0 60px;}
+.label{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#e8452a;margin-bottom:14px;}
+.h1{font-size:50px;font-weight:900;line-height:1.15;color:#fff;margin-bottom:48px;}
+.h1 em{color:#e8452a;font-style:normal;}
+
+/* ── SLIDE 1: COVER ── */
+.slide-cover{background:radial-gradient(ellipse at 25% 50%,#1a0820 0%,#050810 65%);}
+.slide-cover::after{content:'';position:absolute;top:-100px;right:-100px;width:550px;height:550px;background:radial-gradient(circle,rgba(232,69,42,0.12) 0%,transparent 68%);border-radius:50%;pointer-events:none;}
+.cover-wrap{text-align:center;position:relative;z-index:1;}
+.badge{display:inline-block;background:rgba(232,69,42,0.12);border:1px solid rgba(232,69,42,0.35);color:#e8452a;padding:6px 18px;border-radius:999px;font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:30px;}
+.cover-title{font-size:96px;font-weight:900;line-height:1;background:linear-gradient(130deg,#fff 45%,rgba(255,255,255,0.45));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;}
+.cover-cn{font-size:38px;color:#e8452a;font-weight:700;margin-bottom:22px;}
+.cover-tag{font-size:21px;color:rgba(255,255,255,0.55);max-width:560px;margin:0 auto 50px;line-height:1.65;}
+.cover-stats{display:flex;gap:52px;justify-content:center;}
+.cstat-num{font-size:34px;font-weight:900;color:#f0b429;}
+.cstat-lbl{font-size:12px;color:rgba(255,255,255,0.45);margin-top:5px;}
+.divider-v{width:1px;background:rgba(255,255,255,0.1);height:60px;align-self:center;}
+
+/* ── SLIDE 2: PAIN POINTS ── */
+.slide-pain{background:#050810;}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+.pcard{background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:28px;position:relative;overflow:hidden;transition:transform 0.3s;}
+.pcard:hover{transform:translateY(-4px);}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#e8452a,transparent);}
+.pcard-emoji{font-size:38px;margin-bottom:18px;display:block;}
+.pcard-title{font-size:19px;font-weight:700;color:#fff;margin-bottom:10px;}
+.pcard-desc{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.72;}
+.pcard-quote{margin-top:14px;padding:11px 14px;background:rgba(232,69,42,0.07);border-left:3px solid rgba(232,69,42,0.5);border-radius:3px;font-size:12.5px;color:rgba(255,255,255,0.65);font-style:italic;line-height:1.6;}
+
+/* ── SLIDE 3: TARGET USER ── */
+.slide-users{background:linear-gradient(150deg,#050810,#0b1020);}
+.ugrid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;}
+.persona{display:flex;gap:18px;align-items:flex-start;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:22px;margin-bottom:16px;transition:all 0.25s;}
+.persona:hover{background:rgba(255,255,255,0.06);border-color:rgba(232,69,42,0.25);}
+.pavatar{width:52px;height:52px;border-radius:50%;background:rgba(232,69,42,0.1);display:flex;align-items:center;justify-content:center;font-size:26px;flex-shrink:0;}
+.pname{font-size:17px;font-weight:700;color:#fff;margin-bottom:5px;}
+.pdetail{font-size:13.5px;color:rgba(255,255,255,0.48);line-height:1.6;}
+.pneed{margin-top:8px;font-size:12.5px;color:#f0b429;font-weight:600;}
+.mstat-box{text-align:center;padding:36px 28px;background:rgba(232,69,42,0.06);border:1px solid rgba(232,69,42,0.18);border-radius:22px;margin-bottom:20px;}
+.mstat-num{font-size:68px;font-weight:900;color:#e8452a;line-height:1;}
+.mstat-lbl{font-size:15px;color:rgba(255,255,255,0.55);margin-top:8px;}
+.mbullets{list-style:none;}
+.mbullets li{padding:11px 0;border-bottom:1px solid rgba(255,255,255,0.06);font-size:14.5px;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:10px;}
+.mbullets li::before{content:'→';color:#e8452a;font-weight:700;flex-shrink:0;}
+
+/* ── SLIDE 4: SOLUTION ── */
+.slide-sol{background:#050810;}
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center;}
+.sol-features{display:flex;flex-direction:column;gap:18px;margin-top:28px;}
+.solfeat{display:flex;gap:16px;align-items:flex-start;}
+.solicon{width:46px;height:46px;border-radius:12px;background:rgba(232,69,42,0.1);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.solf-title{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px;}
+.solf-desc{font-size:13.5px;color:rgba(255,255,255,0.48);line-height:1.65;}
+.phone-wrap{display:flex;justify-content:center;}
+.phone{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:38px;padding:16px;max-width:240px;width:100%;}
+.pscreen{background:#0d1524;border-radius:26px;padding:18px;min-height:380px;}
+.ps-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;}
+.ps-appname{font-size:15px;font-weight:800;color:#fff;}
+.ps-score{background:#e8452a;color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;}
+.ps-text{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:14px;}
+.waveform{display:flex;align-items:center;gap:3px;height:48px;margin:12px 0;}
+.wb{width:4px;border-radius:2px;background:#e8452a;}
+.tone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:14px;}
+.titem{text-align:center;padding:10px 4px;border-radius:8px;background:rgba(255,255,255,0.05);}
+.titem.ok{background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.28);}
+.titem.err{background:rgba(232,69,42,0.1);border:1px solid rgba(232,69,42,0.28);}
+.tchar{font-size:20px;font-weight:700;color:#fff;}
+.tpin{font-size:10px;color:rgba(255,255,255,0.45);margin-top:2px;}
+.tst{font-size:10px;margin-top:3px;}
+.titem.ok .tst{color:#22c55e;}
+.titem.err .tst{color:#e8452a;}
+.ps-tip{margin-top:14px;background:rgba(240,180,41,0.08);border:1px solid rgba(240,180,41,0.2);border-radius:8px;padding:10px;font-size:12px;color:rgba(240,180,41,0.9);line-height:1.55;}
+
+/* ── SLIDE 5: COMPETITIVE ── */
+.slide-comp{background:#050810;}
+.comp-table{width:100%;border-collapse:collapse;margin-top:8px;font-size:14px;}
+.comp-table th{text-align:left;padding:11px 16px;border-bottom:2px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.4);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;}
+.comp-table td{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,0.05);color:rgba(255,255,255,0.65);}
+.comp-table tr:last-child td{border-bottom:none;}
+.comp-table tr.ours td{color:#fff;font-weight:700;}
+.comp-table tr.ours td:first-child{color:#e8452a;}
+.chip{display:inline-block;padding:2px 9px;border-radius:5px;font-size:12px;font-weight:700;}
+.chip.y{background:rgba(34,197,94,0.12);color:#22c55e;}
+.chip.n{background:rgba(232,69,42,0.12);color:#e8452a;}
+.chip.p{background:rgba(240,180,41,0.12);color:#f0b429;}
+.insight-row{display:flex;gap:20px;margin-top:28px;}
+.insight{flex:1;background:rgba(232,69,42,0.05);border:1px solid rgba(232,69,42,0.15);border-radius:14px;padding:18px;}
+.insight-title{font-size:13px;font-weight:700;color:#e8452a;margin-bottom:7px;}
+.insight-text{font-size:13.5px;color:rgba(255,255,255,0.55);line-height:1.65;}
+</style>
+</head>
+<body>
+
+<div class="logo"><span>Shadow</span>Speak</div>
+<div class="counter" id="counter">1 / 9</div>
+
+<!-- ════ SLIDE 1: COVER ════ -->
+<div class="slide slide-cover active" id="s1">
+  <div class="cover-wrap">
+    <div class="badge">🎯 3-Min Pitch · Pre-Seed Round</div>
+    <div class="cover-title">ShadowSpeak</div>
+    <div class="cover-cn">影说</div>
+    <div class="cover-tag">留学生汉语<strong style="color:#e8452a;">学业保障</strong>基础设施<br>AI 合规纠音 · 影子跟读 · HSK 风险预警</div>
+    <div class="cover-stats">
+      <div class="cstat">
+        <div class="cstat-num">100万+</div>
+        <div class="cstat-lbl">在华留学生面临 HSK 学位门槛</div>
+      </div>
+      <div class="divider-v"></div>
+      <div class="cstat">
+        <div class="cstat-num">HSK 4–6</div>
+        <div class="cstat-lbl">学位授予强制语言考核要求</div>
+      </div>
+      <div class="divider-v"></div>
+      <div class="cstat">
+        <div class="cstat-num">$0</div>
+        <div class="cstat-lbl">现有工具与学校管理系统集成</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 2: PAIN POINTS ════ -->
+<div class="slide slide-pain" id="s2">
+  <div class="inner">
+    <div class="label">The Problem</div>
+    <div class="h1">留学生学中文，<em>语言风险无人管理</em></div>
+    <div class="pain-grid">
+      <div class="pcard">
+        <span class="pcard-emoji">📋</span>
+        <div class="pcard-title">HSK 达标 = 学籍存续硬条件</div>
+        <div class="pcard-desc">同济大学规定：预科结业须 HSK≥3 级；本硕博学位申请须 HSK 4–5 级。语言不达标 → 奖学金取消、学籍注销，须上报国家留学基金委及大使馆。</div>
+        <div class="pcard-quote">「HSK未过，奖学金没了，我只能回国。」— 同济留学生访谈</div>
+      </div>
+      <div class="pcard">
+        <span class="pcard-emoji">🔇</span>
+        <div class="pcard-title">发音练了，但无人告知哪里错</div>
+        <div class="pcard-desc">Duolingo / HelloChinese 发音评分不精确，声调混淆无法识别，学生不知道自己哪个字、哪个声调发错了，无法形成改进闭环。</div>
+        <div class="pcard-quote">"I passed the pronunciation check saying gibberish. It's useless." — Reddit r/ChineseLanguage</div>
+      </div>
+      <div class="pcard">
+        <span class="pcard-emoji">🏫</span>
+        <div class="pcard-title">学院无数据，风险看不见</div>
+        <div class="pcard-desc">教师无法知晓学生课外语言能力进展，问题只在 HSK 考试后才暴露。高风险学生未被及时识别，补救窗口错失，培养完成率被动承压。</div>
+        <div class="pcard-quote">「我们每年都有几个孩子因为语言没过关无法拿学位，但没有提前预警的工具。」— 某高校留学生学院教师</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 3: TARGET USERS ════ -->
+<div class="slide slide-users" id="s3">
+  <div class="inner">
+    <div class="label">Target Users & Market</div>
+    <div class="h1">双层市场：<em>学院管理者 × 学生用户</em></div>
+    <div class="ugrid">
+      <div>
+        <div class="persona">
+          <div class="pavatar">🏛️</div>
+          <div>
+            <div class="pname">留学生学院管理者（ToB 决策人）</div>
+            <div class="pdetail">负责留学生培养质量、奖学金评审与 HSK 达标管理。承担教育部培养质量考核压力，亟需课外中文能力可视化工具。</div>
+            <div class="pneed">核心需求 → HSK 风险预警 + 学情报告 + 奖学金评审数据支持</div>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="pavatar">🎓</div>
+          <div>
+            <div class="pname">在华留学生（ToC 终端用户）</div>
+            <div class="pdetail">须在校期间持续维持或提升汉语水平，面临学位门槛压力，课外练习工具匮乏，发音错误无精准反馈。</div>
+            <div class="pneed">核心需求 → 声调级纠音 + HSK 专项练习 + HSKK 模拟</div>
+          </div>
+        </div>
+        <div class="persona">
+          <div class="pavatar">📚</div>
+          <div>
+            <div class="pname">汉语国际教育专业学生（高需求细分）</div>
+            <div class="pdetail">须达 HSK 5 级（≥210分）+ HSKK 中级（≥60分）双门槛，是最高风险、最愿付费的学生群体。</div>
+            <div class="pneed">核心需求 → HSKK 全题型模拟 + 口语精准评测</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="mstat-box">
+          <div class="mstat-num">100万+</div>
+          <div class="mstat-lbl">在华留学生面临 HSK 学位门槛（教育部 2024）</div>
+        </div>
+        <ul class="mbullets">
+          <li>教育部 985/211 高校全部要求 HSK 达标方可授予学位</li>
+          <li>中国政府奖学金生：语言不达标奖学金直接取消</li>
+          <li>HSKK 年报名考生 >30 万且持续增长</li>
+          <li>愿意为学习工具付费比例：42%（SurveyMonkey 2023）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 4: SOLUTION ════ -->
+<div class="slide slide-sol" id="s4">
+  <div class="inner">
+    <div class="label">Our Solution</div>
+    <div class="h1">四大能力，<em>竞品全部缺失</em></div>
+    <div class="sol-grid">
+      <div>
+        <div class="sol-features">
+          <div class="solfeat">
+            <div class="solicon">🎙️</div>
+            <div>
+              <div class="solf-title">声调级 AI 实时发音纠错</div>
+              <div class="solf-desc">不只给分，精确定位声母 / 韵母 / 声调偏差，实时可视化反馈，告诉你「第2声发成了第4声」而非「发音错误」。</div>
+            </div>
+          </div>
+          <div class="solfeat">
+            <div class="solicon">🔁</div>
+            <div>
+              <div class="solf-title">完整影子跟读工作流</div>
+              <div class="solf-desc">素材库 → 0.5×–1.5× 可调速 → 逐句录音 → AI 波形对比 → 错误归因 → 错题本 → 间隔复习，全流程闭环。</div>
+            </div>
+          </div>
+          <div class="solfeat">
+            <div class="solicon">📒</div>
+            <div>
+              <div class="solf-title">发音错题本（全球首创）</div>
+              <div class="solf-desc">用艾宾浩斯遗忘曲线管理「你最容易发错的音」，定期推送复习——学习投入度可量化，直接支持奖学金评审。</div>
+            </div>
+          </div>
+          <div class="solfeat">
+            <div class="solicon">🏫</div>
+            <div>
+              <div class="solf-title">学院级 HSK 风险预警 Dashboard</div>
+              <div class="solf-desc">教师一屏看全院：高风险学生自动标记，HSK 距离目标差值实时更新，月度学情报告一键导出，直接支持奖学金评审汇报。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="phone-wrap">
+        <div class="phone">
+          <div class="pscreen">
+            <div class="ps-header">
+              <div class="ps-appname">影说</div>
+              <div class="ps-score">发音 87分</div>
+            </div>
+            <div class="ps-text">正在分析：「我在北京大学学习中文」</div>
+            <div class="waveform" id="wf"></div>
+            <div class="tone-grid">
+              <div class="titem ok"><div class="tchar">我</div><div class="tpin">wǒ</div><div class="tst">✓ 准确</div></div>
+              <div class="titem ok"><div class="tchar">在</div><div class="tpin">zài</div><div class="tst">✓ 准确</div></div>
+              <div class="titem err"><div class="tchar">北</div><div class="tpin">běi</div><div class="tst">✗ 发成4声</div></div>
+              <div class="titem ok"><div class="tchar">京</div><div class="tpin">jīng</div><div class="tst">✓ 准确</div></div>
+            </div>
+            <div class="ps-tip">💡 「北 běi」第3声：音调先降后升，尾部需上扬。点击收入错题本 →</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 5: COMPETITIVE LANDSCAPE ════ -->
+<div class="slide slide-comp" id="s5">
+  <div class="inner">
+    <div class="label">Competitive Landscape</div>
+    <div class="h1">竞品都在做「语言学习」，<em>没人做「学业合规保障」</em></div>
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th>产品</th>
+          <th>精准发音纠错</th>
+          <th>影子跟读闭环</th>
+          <th>发音错题本</th>
+          <th>HSKK模拟</th>
+          <th>机构 HSK 风险管理</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Duolingo</td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td></tr>
+        <tr><td>HelloChinese</td><td><span class="chip p">△ 粗粒度</span></td><td><span class="chip p">△ 仅播放</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td></tr>
+        <tr><td>Speechling</td><td><span class="chip p">△ 真人批改</span></td><td><span class="chip p">△ 慢反馈</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td></tr>
+        <tr><td>FluentU</td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td><td><span class="chip n">✗ 无</span></td></tr>
+        <tr class="ours"><td>🔥 ShadowSpeak</td><td><span class="chip y">✓ 声调级精准</span></td><td><span class="chip y">✓ 全流程闭环</span><td><span class="chip y">✓ 全球首创</span></td><td><span class="chip y">✓ 专项全题型</span></td><td><span class="chip y">✓ 合规级管理</span></td></tr>
+      </tbody>
+    </table>
+    <div class="insight-row">
+      <div class="insight">
+        <div class="insight-title">🔒 双重竞争壁垒</div>
+        <div class="insight-text">技术壁垒：声调级评测 API（讯飞/Azure）+ 专有错误归因模型，越用越准。<br><strong style="color:rgba(255,255,255,0.75);">制度壁垒</strong>：与高校 HSK 管理制度深度绑定，一旦纳入留学生培养方案，替换成本极高。</div>
+      </div>
+      <div class="insight">
+        <div class="insight-title">📡 合规锁定飞轮</div>
+        <div class="insight-text">同济等高校将平台纳入留学生管理方案 → 产生学院级使用数据 → 更精准的风险预警模型 → 更多高校采购 → 教育部「最佳实践」背书 → 形成政策 + 技术双飞轮。</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ════ SLIDE 6: BUSINESS MODEL ════ -->
+<style>
+.slide-biz{background:linear-gradient(160deg,#050810,#0b0d18);}
+.biz-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start;}
+.biz-tier{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.09);border-radius:18px;padding:26px;margin-bottom:18px;transition:all 0.25s;}
+.biz-tier.highlight{border-color:rgba(232,69,42,0.35);background:rgba(232,69,42,0.05);}
+.biz-tier-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;}
+.biz-name{font-size:17px;font-weight:700;color:#fff;}
+.biz-price{font-size:21px;font-weight:900;color:#f0b429;}
+.biz-desc{font-size:13.5px;color:rgba(255,255,255,0.48);line-height:1.65;}
+.biz-tag{display:inline-block;background:rgba(232,69,42,0.15);color:#e8452a;font-size:11px;font-weight:700;padding:3px 10px;border-radius:5px;margin-bottom:10px;}
+.funnel{padding:24px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.07);border-radius:18px;}
+.ftitle{font-size:15px;font-weight:700;color:#fff;margin-bottom:20px;}
+.fstep{display:flex;gap:14px;align-items:center;margin-bottom:18px;}
+.fnum{width:36px;height:36px;border-radius:50%;background:rgba(232,69,42,0.12);border:1px solid rgba(232,69,42,0.25);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#e8452a;flex-shrink:0;}
+.ftext-title{font-size:14.5px;font-weight:700;color:#fff;margin-bottom:3px;}
+.ftext-sub{font-size:12.5px;color:rgba(255,255,255,0.42);}
+.arrow-down{text-align:center;color:rgba(255,255,255,0.2);font-size:20px;margin:-8px 0;}
+</style>
+<div class="slide slide-biz" id="s6">
+  <div class="inner">
+    <div class="label">Business Model</div>
+    <div class="h1">ToB 合规锁定，<em>ToC 自然转化</em></div>
+    <div class="biz-grid">
+      <div>
+        <div class="biz-tier highlight">
+          <div class="biz-tag">⭐ ToB 主力 · 高校留学生学院</div>
+          <div class="biz-tier-top">
+            <div class="biz-name">学业保障战略合作版</div>
+            <div class="biz-price">¥28,000/年</div>
+          </div>
+          <div class="biz-desc">全院留学生无限席位 + 教师 Dashboard + HSK 风险预警 + 奖学金评审报告 + 专属客户成功经理。与校方签署战略合作协议，非软件采购。</div>
+        </div>
+        <div class="biz-tier">
+          <div class="biz-tag">ToB 次级 · 语言培训机构</div>
+          <div class="biz-tier-top">
+            <div class="biz-name">机构版（孔子学院 / HSK 培训）</div>
+            <div class="biz-price">¥3,800/学期</div>
+          </div>
+          <div class="biz-desc">班级管理 + 教师 Dashboard + HSKK 模拟专项。一次签约覆盖 50–200+ 学生，LTV 极高。</div>
+        </div>
+        <div class="biz-tier">
+          <div class="biz-tag">ToC 个人版</div>
+          <div class="biz-tier-top">
+            <div class="biz-name">Pro 订阅</div>
+            <div class="biz-price">¥68/月</div>
+          </div>
+          <div class="biz-desc">全功能跟读 + AI 纠音 + 错题本 + 基础模拟考试。主要通过机构流出学生和口碑获取。</div>
+        </div>
+      </div>
+      <div>
+        <div class="funnel">
+          <div class="ftitle">📈 合规锁定增长飞轮</div>
+          <div class="fstep">
+            <div class="fnum">1</div>
+            <div><div class="ftext-title">签约同济等顶级高校</div><div class="ftext-sub">以「学业保障基础设施」而非产品销售切入</div></div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="fstep">
+            <div class="fnum">2</div>
+            <div><div class="ftext-title">纳入留学生培养方案</div><div class="ftext-sub">强制或强推荐使用 → 高活跃度 → 数据积累</div></div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="fstep">
+            <div class="fnum">3</div>
+            <div><div class="ftext-title">HSK 达标率可量化提升</div><div class="ftext-sub">学院用数据对教育部汇报 → 同济背书效应</div></div>
+          </div>
+          <div class="arrow-down">↓</div>
+          <div class="fstep">
+            <div class="fnum">4</div>
+            <div><div class="ftext-title">复旦 / 交大 / 浙大跟进</div><div class="ftext-sub">同类高校竞争压力 → 主动求合作</div></div>
+          </div>
+          <div style="margin-top:20px;padding:14px;background:rgba(240,180,41,0.08);border-radius:10px;font-size:13px;color:rgba(240,180,41,0.9);">
+            🎯 Year 1 目标：签约 5 所高校 + 15 所机构，覆盖 8000+ 学生，ARR ¥500K+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 7: ROADMAP ════ -->
+<style>
+.slide-road{background:#050810;}
+.road-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:36px;}
+.phase{border-radius:18px;padding:26px;border:1px solid rgba(255,255,255,0.08);}
+.phase-1{background:linear-gradient(145deg,rgba(232,69,42,0.08),rgba(232,69,42,0.02));}
+.phase-2{background:linear-gradient(145deg,rgba(240,180,41,0.06),rgba(240,180,41,0.01));}
+.phase-3{background:linear-gradient(145deg,rgba(99,102,241,0.08),rgba(99,102,241,0.02));}
+.phase-num{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;}
+.p1 .phase-num{color:#e8452a;}.p2 .phase-num{color:#f0b429;}.p3 .phase-num{color:#818cf8;}
+.phase-title{font-size:20px;font-weight:800;color:#fff;margin-bottom:5px;}
+.phase-period{font-size:12.5px;color:rgba(255,255,255,0.35);margin-bottom:18px;}
+.phase-items{list-style:none;}
+.phase-items li{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px;color:rgba(255,255,255,0.6);display:flex;align-items:center;gap:8px;}
+.phase-items li:last-child{border-bottom:none;}
+.phase-items li::before{content:'▸';font-size:12px;}
+.p1 .phase-items li::before{color:#e8452a;}.p2 .phase-items li::before{color:#f0b429;}.p3 .phase-items li::before{color:#818cf8;}
+.phase-kpi{margin-top:16px;padding:12px;border-radius:8px;font-size:13px;font-weight:700;}
+.phase-1 .phase-kpi{background:rgba(232,69,42,0.1);color:#e8452a;}
+.phase-2 .phase-kpi{background:rgba(240,180,41,0.1);color:#f0b429;}
+.phase-3 .phase-kpi{background:rgba(99,102,241,0.1);color:#818cf8;}
+</style>
+<div class="slide slide-road" id="s7">
+  <div class="inner">
+    <div class="label">Product Roadmap</div>
+    <div class="h1">18个月从 MVP 到<em>高校规模化合规版</em></div>
+    <div class="road-cols">
+      <div class="phase phase-1 p1">
+        <div class="phase-num">Phase 1</div>
+        <div class="phase-title">MVP 验证</div>
+        <div class="phase-period">Month 0 – 6</div>
+        <ul class="phase-items">
+          <li>AI 声调级发音评测集成</li>
+          <li>影子跟读完整工作流</li>
+          <li>基础发音错题本</li>
+          <li>HSK 1–4 素材库</li>
+          <li>同济试点班（预科 + 本科）</li>
+        </ul>
+        <div class="phase-kpi">KPI：试点达标率提升 15%+</div>
+      </div>
+      <div class="phase phase-2 p2">
+        <div class="phase-num">Phase 2</div>
+        <div class="phase-title">高校商业化</div>
+        <div class="phase-period">Month 6 – 12</div>
+        <ul class="phase-items">
+          <li>学院级 HSK 风险预警 Dashboard</li>
+          <li>奖学金评审数据报告模块</li>
+          <li>HSKK 全题型模拟考试</li>
+          <li>同济正式战略合作签约</li>
+          <li>复旦 / 交大 / 浙大跟进洽谈</li>
+        </ul>
+        <div class="phase-kpi">KPI：高校 5+ · ARR ¥200K</div>
+      </div>
+      <div class="phase phase-3 p3">
+        <div class="phase-num">Phase 3</div>
+        <div class="phase-title">规模扩张</div>
+        <div class="phase-period">Month 12 – 18</div>
+        <ul class="phase-items">
+          <li>全国 985/211 高校覆盖</li>
+          <li>多语种母语者口音适配</li>
+          <li>教育部「优质教辅」资质申请</li>
+          <li>孔子学院全球渠道合作</li>
+          <li>A 轮融资准备</li>
+        </ul>
+        <div class="phase-kpi">KPI：高校 30+ · ARR ¥500K+</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 8: GO TO MARKET ════ -->
+<style>
+.slide-gtm{background:linear-gradient(150deg,#050810,#0b1020);}
+.gtm-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+.gtm-channel{display:flex;gap:16px;align-items:flex-start;padding:18px 20px;border-radius:14px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);margin-bottom:14px;transition:all 0.25s;}
+.gtm-channel:hover{border-color:rgba(232,69,42,0.25);}
+.gtm-icon{font-size:28px;flex-shrink:0;}
+.gtm-name{font-size:15px;font-weight:700;color:#fff;margin-bottom:5px;}
+.gtm-desc{font-size:13px;color:rgba(255,255,255,0.45);line-height:1.6;}
+.tob-block{background:rgba(232,69,42,0.06);border:1px solid rgba(232,69,42,0.2);border-radius:16px;padding:24px;}
+.tob-header{font-size:14px;font-weight:700;color:#e8452a;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.tob-step{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px;}
+.tob-num{min-width:24px;height:24px;border-radius:50%;background:#e8452a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:900;color:#fff;}
+.tob-txt{font-size:13.5px;color:rgba(255,255,255,0.6);line-height:1.6;}
+.tob-metric{margin-top:16px;display:flex;gap:16px;}
+.tm{flex:1;text-align:center;padding:12px;background:rgba(0,0,0,0.3);border-radius:10px;}
+.tm-num{font-size:22px;font-weight:900;color:#f0b429;}
+.tm-lbl{font-size:11px;color:rgba(255,255,255,0.38);margin-top:4px;}
+</style>
+<div class="slide slide-gtm" id="s8">
+  <div class="inner">
+    <div class="label">Go-to-Market</div>
+    <div class="h1">「合规痛点」切入，<em>同济模式快速复制</em></div>
+    <div class="gtm-layout">
+      <div>
+        <div class="gtm-channel">
+          <div class="gtm-icon">🏛️</div>
+          <div>
+            <div class="gtm-name">高校留学生学院直销（P0）</div>
+            <div class="gtm-desc">以「HSK 合规保障」为提案核心，直接对接学院院长/主任级别决策人。同济已验证路径，目标复制至复旦、交大、浙大等前 10 所高校。</div>
+          </div>
+        </div>
+        <div class="gtm-channel">
+          <div class="gtm-icon">🎓</div>
+          <div>
+            <div class="gtm-name">汉语教师 KOL 渗透（P1）</div>
+            <div class="gtm-desc">赠送教师免费专业版账号，由教师推荐学生使用。一位老师 = 一个班 30–50 学生，单机构转化节省获客成本 80%。</div>
+          </div>
+        </div>
+        <div class="gtm-channel">
+          <div class="gtm-icon">🏆</div>
+          <div>
+            <div class="gtm-name">教育部 / 汉办政策渠道（P2）</div>
+            <div class="gtm-desc">申请「来华留学教育教辅数字化试点」资质，借助政策背书同步覆盖全国孔子学院网络，低成本打开国际市场。</div>
+          </div>
+        </div>
+        <div class="gtm-channel">
+          <div class="gtm-icon">📣</div>
+          <div>
+            <div class="gtm-name">留学生社区 & Reddit / 小红书（P3）</div>
+            <div class="gtm-desc">r/ChineseLanguage 50万+社区用户、小红书「来华留学」话题。早期免费账号换真实反馈，形成 ToC 口碑内容。</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="tob-block">
+          <div class="tob-header">🏆 高校首单路径（同济模式）</div>
+          <div class="tob-step">
+            <div class="tob-num">1</div>
+            <div class="tob-txt">以《HSK 达标风险分析报告》为敲门砖，约学院院长/主任战略沟通（展示政策锚点：第35条结业条款）</div>
+          </div>
+          <div class="tob-step">
+            <div class="tob-num">2</div>
+            <div class="tob-txt">免费试点 1 学期（2–3个班），重点展示 Dashboard 的 HSK 风险预警价值，而非产品功能</div>
+          </div>
+          <div class="tob-step">
+            <div class="tob-num">3</div>
+            <div class="tob-txt">提交学期末《留学生汉语能力提升白皮书》，学院凭报告对上级汇报教学质量提升</div>
+          </div>
+          <div class="tob-step">
+            <div class="tob-num">4</div>
+            <div class="tob-txt">签署战略合作协议（非软件采购），学院主动向同行推介</div>
+          </div>
+          <div class="tob-metric">
+            <div class="tm"><div class="tm-num">¥0</div><div class="tm-lbl">试点成本</div></div>
+            <div class="tm"><div class="tm-num">3月</div><div class="tm-lbl">典型决策周期</div></div>
+            <div class="tm"><div class="tm-num">90%+</div><div class="tm-lbl">预估续约率</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════ SLIDE 9: CLOSING ════ -->
+<style>
+.slide-close{background:radial-gradient(ellipse at 50% 30%,#1a0514 0%,#050810 65%);}
+.slide-close::before{content:'';position:absolute;top:-50px;left:50%;transform:translateX(-50%);width:700px;height:700px;background:radial-gradient(circle,rgba(232,69,42,0.06) 0%,transparent 68%);border-radius:50%;pointer-events:none;}
+.close-inner{text-align:center;position:relative;z-index:1;}
+.one-liner-box{margin:0 auto 40px;max-width:700px;background:rgba(232,69,42,0.06);border:2px solid rgba(232,69,42,0.25);border-radius:20px;padding:30px;}
+.one-liner-label{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#e8452a;margin-bottom:12px;}
+.one-liner-text{font-size:20px;font-weight:700;color:#fff;line-height:1.6;}
+.ask-grid{display:flex;gap:20px;justify-content:center;max-width:700px;margin:0 auto 36px;}
+.ask-item{flex:1;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:20px;}
+.ask-num{font-size:30px;font-weight:900;color:#f0b429;margin-bottom:5px;}
+.ask-lbl{font-size:13px;color:rgba(255,255,255,0.5);}
+.contact-line{font-size:14px;color:rgba(255,255,255,0.35);}
+.use-of-funds{display:flex;gap:12px;justify-content:center;max-width:700px;margin:0 auto 28px;flex-wrap:wrap;}
+.uf{padding:10px 20px;border-radius:10px;font-size:13px;font-weight:700;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:rgba(255,255,255,0.65);}
+.uf span{color:#f0b429;}
+</style>
+<div class="slide slide-close" id="s9">
+  <div class="close-inner inner">
+    <div class="label" style="text-align:center;margin-bottom:28px;">One-Liner Positioning</div>
+    <div class="one-liner-box">
+      <div class="one-liner-label">🎯 产品战略定位</div>
+      <div class="one-liner-text">
+        「ShadowSpeak 影说 是高校留学生汉语<em style="color:#e8452a;">学业保障基础设施</em>——<br>
+        AI 实时告诉学生哪个声调发错了，<br>
+        同时为学院提供<em style="color:#f0b429;">HSK 风险预警与奖学金评审数据</em>，<br>
+        将「语言不达标」风险前移管控。」
+      </div>
+    </div>
+    <div class="ask-grid">
+      <div class="ask-item">
+        <div class="ask-num">¥350万</div>
+        <div class="ask-lbl">Pre-Seed 融资目标</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">18月</div>
+        <div class="ask-lbl">跑通高校合规合作模式</div>
+      </div>
+      <div class="ask-item">
+        <div class="ask-num">ARR ¥500K+</div>
+        <div class="ask-lbl">Month 18 营收目标</div>
+      </div>
+    </div>
+    <div class="use-of-funds">
+      <div class="uf"><span>40%</span> 技术研发（AI 评测引擎）</div>
+      <div class="uf"><span>30%</span> 高校销售 & 客户成功</div>
+      <div class="uf"><span>20%</span> 内容素材库建设</div>
+      <div class="uf"><span>10%</span> 运营 & 市场</div>
+    </div>
+    <div class="contact-line">📧 contact@shadowspeak.ai &nbsp;|&nbsp; 🌐 shadowspeak.ai &nbsp;|&nbsp; 服务 100万+ 在华留学生</div>
+  </div>
+</div>
+
+<!-- ════ NAVIGATION ════ -->
+<div class="nav">
+  <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">← Prev</button>
+  <div class="dots" id="dots"></div>
+  <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Next →</button>
+</div>
+
+<script>
+const total = 9;
+let cur = 1;
+const dotsEl = document.getElementById('dots');
+const counterEl = document.getElementById('counter');
+
+for(let i=1;i<=total;i++){
+  const d=document.createElement('div');
+  d.className='dot'+(i===1?' active':'');
+  d.onclick=()=>goTo(i);
+  dotsEl.appendChild(d);
+}
+
+const wf=document.getElementById('wf');
+if(wf){
+  const heights=[8,14,22,38,46,30,42,50,36,28,44,20,34,48,26,18,40,32,24,16];
+  heights.forEach(h=>{
+    const b=document.createElement('div');
+    b.className='wb';b.style.height=h+'px';
+    wf.appendChild(b);
+  });
+}
+
+function goTo(n){
+  const prev=document.getElementById('s'+cur);
+  prev.classList.remove('active');
+  prev.classList.add('exit');
+  setTimeout(()=>prev.classList.remove('exit'),600);
+  cur=n;
+  document.getElementById('s'+cur).classList.add('active');
+  counterEl.textContent=cur+' / '+total;
+  const dots=dotsEl.querySelectorAll('.dot');
+  dots.forEach((d,i)=>d.classList.toggle('active',i===cur-1));
+}
+
+function changeSlide(dir){
+  const next=cur+dir;
+  if(next<1||next>total)return;
+  goTo(next);
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' ')changeSlide(1);
+  if(e.key==='ArrowLeft')changeSlide(-1);
+});
+</script>
+</body>
+</html>
+
