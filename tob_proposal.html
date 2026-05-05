@@ -3,175 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShadowSpeak 影说 — 同济大学留学生学院合作提案</title>
+<title>ShadowSpeak × 同济大学留学生学院 — 战略合作提案</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --brand:#004B87;--brand-dark:#003566;--brand-accent:#0077CC;
-  --gold:#C9A84C;--gold-light:#fdf8ed;
-  --ink:#1a1a1a;--ink2:#4a4a4a;--ink3:#888;
-  --light:#f5f7fa;--white:#ffffff;
-  --border:#dde4ee;--surface:#f8fafd;
-  --blue-light:#eef4fb;--green-light:#f0faf4;--red-light:#fdf2f0;
-  --green:#1a7a40;--red:#c0392b;
+  --navy:#002855;--navy2:#003d7a;--blue:#0057A8;--blue2:#0077CC;
+  --gold:#C9A84C;--gold2:#e8c46a;--gold-bg:#fdf8ed;
+  --red:#b5162a;--red-bg:#fdf2f4;
+  --green:#1a7a40;--green-bg:#f0faf4;
+  --ink:#1a1a1a;--ink2:#3d3d3d;--ink3:#777;
+  --bg:#f3f5f8;--white:#fff;
+  --border:#dce4ef;--surface:#f8fafd;
 }
-html{font-size:16px;}
-body{font-family:'Inter',sans-serif;background:var(--light);color:var(--ink);line-height:1.7;}
-.page{max-width:900px;margin:0 auto;background:var(--white);box-shadow:0 4px 40px rgba(0,0,0,0.08);}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);line-height:1.72;font-size:15px;}
+.page{max-width:940px;margin:0 auto;background:var(--white);box-shadow:0 8px 60px rgba(0,30,80,0.12);}
 
-/* ── HEADER ── */
-.header{
-  background:linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 60%, var(--brand-accent) 100%);
-  padding:52px 56px 44px;position:relative;overflow:hidden;
+/* ══ COVER ══ */
+.cover{
+  background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 55%,#004fa3 100%);
+  padding:56px 60px 50px;position:relative;overflow:hidden;
 }
-.header::after{
-  content:'';position:absolute;top:-80px;right:-80px;
-  width:360px;height:360px;border-radius:50%;
-  border:1px solid rgba(255,255,255,0.08);
+.cover::before{
+  content:'';position:absolute;top:-120px;right:-120px;
+  width:480px;height:480px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.06);
 }
-.header::before{
-  content:'同济';position:absolute;bottom:-24px;right:40px;
-  font-size:140px;font-weight:900;color:rgba(255,255,255,0.04);
-  letter-spacing:-4px;pointer-events:none;
+.cover::after{
+  content:'';position:absolute;bottom:-60px;right:200px;
+  width:260px;height:260px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.04);
 }
-.h-kicker{
+.cover-watermark{
+  position:absolute;right:52px;top:44px;
+  font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,0.25);border:1px solid rgba(255,255,255,0.15);
+  padding:5px 14px;border-radius:4px;
+}
+.cover-kicker{
   font-size:11.5px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;
-  color:rgba(255,255,255,0.6);margin-bottom:14px;display:flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,0.5);margin-bottom:20px;display:flex;align-items:center;gap:10px;
 }
-.h-kicker-badge{
-  background:var(--gold);color:#fff;font-size:10px;font-weight:800;
-  padding:2px 10px;border-radius:999px;letter-spacing:1px;
+.cover-kicker-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.cover-school{
+  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);
+  border-radius:10px;padding:13px 20px;margin-bottom:28px;
+  display:inline-flex;align-items:center;gap:14px;
 }
-.h-title{font-size:40px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:8px;}
-.h-title span{color:rgba(255,255,255,0.5);}
-.h-subtitle{font-size:17px;color:rgba(255,255,255,0.72);font-weight:400;margin-bottom:36px;max-width:600px;line-height:1.65;}
-.h-meta{display:flex;gap:0;flex-wrap:wrap;}
-.h-meta-item{
-  font-size:12.5px;color:rgba(255,255,255,0.5);
-  padding-right:22px;margin-right:22px;border-right:1px solid rgba(255,255,255,0.12);
+.cs-name{font-size:17px;font-weight:800;color:#fff;}
+.cs-en{font-size:12px;color:rgba(255,255,255,0.5);margin-top:2px;}
+.cover-title{font-size:38px;font-weight:900;color:#fff;line-height:1.2;margin-bottom:10px;}
+.cover-title em{color:var(--gold2);font-style:normal;}
+.cover-subtitle{font-size:16.5px;color:rgba(255,255,255,0.65);max-width:620px;line-height:1.7;margin-bottom:38px;}
+.cover-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px;}
+.cpill{
+  background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+  color:rgba(255,255,255,0.75);font-size:12.5px;font-weight:600;
+  padding:6px 16px;border-radius:999px;
 }
-.h-meta-item:last-child{border-right:none;}
-.h-meta strong{color:rgba(255,255,255,0.92);display:block;font-size:14px;margin-bottom:2px;}
-/* school banner */
-.school-banner{
-  background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);
-  border-radius:10px;padding:12px 18px;margin-bottom:28px;
-  display:flex;align-items:center;gap:14px;
-}
-.sb-flag{font-size:24px;}
-.sb-name{font-size:15px;font-weight:800;color:#fff;}
-.sb-dept{font-size:13px;color:rgba(255,255,255,0.55);}
+.cpill.gold{background:rgba(201,168,76,0.15);border-color:rgba(201,168,76,0.35);color:var(--gold2);}
+.cover-meta{display:flex;gap:0;border-top:1px solid rgba(255,255,255,0.1);padding-top:22px;}
+.cm-item{padding-right:28px;margin-right:28px;border-right:1px solid rgba(255,255,255,0.1);}
+.cm-item:last-child{border-right:none;}
+.cm-label{font-size:11px;color:rgba(255,255,255,0.4);font-weight:600;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:4px;}
+.cm-val{font-size:14.5px;font-weight:700;color:rgba(255,255,255,0.9);}
 
-/* ── BODY ── */
-.body{padding:0 56px 60px;}
+/* ══ EXEC SUMMARY BAR ══ */
+.exec-bar{
+  background:linear-gradient(90deg,var(--gold-bg),#fffdf5);
+  border-top:3px solid var(--gold);border-bottom:1px solid #eedda0;
+  padding:20px 60px;display:flex;align-items:center;gap:18px;
+}
+.eb-icon{font-size:22px;flex-shrink:0;}
+.eb-text{font-size:14.5px;color:#6b4c00;line-height:1.65;}
+.eb-text strong{color:#4a3300;font-weight:700;}
 
-.sec{padding:40px 0 0;}
+/* ══ BODY ══ */
+.body{padding:0 60px;}
+
+/* section */
+.sec{padding:44px 0 0;}
+.sec-num{font-size:10.5px;font-weight:800;letter-spacing:2px;color:var(--ink3);text-transform:uppercase;margin-bottom:4px;}
 .sec-label{
   font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;
-  color:var(--brand);border-left:3px solid var(--brand);padding-left:10px;margin-bottom:18px;
+  color:var(--blue);border-left:3px solid var(--blue);padding-left:10px;margin-bottom:16px;
 }
-.sec-title{font-size:24px;font-weight:800;color:var(--ink);margin-bottom:14px;}
+.sec-label.gold{color:#9a7010;border-left-color:var(--gold);}
+.sec-label.red{color:var(--red);border-left-color:var(--red);}
+.sec-label.green{color:var(--green);border-left-color:var(--green);}
+.sec-title{font-size:24px;font-weight:800;color:var(--ink);line-height:1.35;margin-bottom:14px;}
+.sec-lead{font-size:16px;color:var(--ink2);line-height:1.8;margin-bottom:20px;}
 p{color:var(--ink2);font-size:15px;line-height:1.8;margin-bottom:12px;}
 ul,ol{color:var(--ink2);padding-left:20px;margin-bottom:12px;}
 li{margin-bottom:8px;font-size:15px;line-height:1.7;}
 strong{color:var(--ink);font-weight:700;}
+.divider{height:1px;background:var(--border);margin:40px 0 0;}
 
-.divider{height:1px;background:var(--border);margin:36px 0 0;}
-
-/* highlight box */
-.hbox{border-radius:12px;padding:20px 24px;margin:20px 0;}
-.hbox-blue{background:var(--blue-light);border:1px solid rgba(0,75,135,0.15);}
-.hbox-gold{background:var(--gold-light);border:1px solid rgba(201,168,76,0.25);}
-.hbox-green{background:var(--green-light);border:1px solid rgba(26,122,64,0.15);}
-.hbox-gray{background:var(--surface);border:1px solid var(--border);}
-.hbox-red{background:var(--red-light);border:1px solid rgba(192,57,43,0.12);}
-.hbox-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:8px;}
-.hbox-blue .hbox-title{color:var(--brand);}
-.hbox-gold .hbox-title{color:#9a7010;}
-.hbox-green .hbox-title{color:var(--green);}
-.hbox-gray .hbox-title{color:var(--ink3);}
-.hbox-red .hbox-title{color:var(--red);}
-.hbox p{margin:0;font-size:14px;}
-
-/* two-col */
-.two-col{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:16px 0;}
-.col-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;}
-.cc-icon{font-size:28px;margin-bottom:10px;}
-.cc-title{font-size:15.5px;font-weight:700;color:var(--ink);margin-bottom:6px;}
-.cc-desc{font-size:14px;color:var(--ink2);line-height:1.7;}
-
-/* table */
-.table-wrap{overflow-x:auto;margin:16px 0;border-radius:10px;border:1px solid var(--border);}
-table{width:100%;border-collapse:collapse;font-size:14px;}
-th{padding:11px 16px;text-align:left;background:var(--surface);color:var(--ink3);font-size:12px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;border-bottom:1px solid var(--border);}
-td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--ink2);vertical-align:top;}
-tr:last-child td{border-bottom:none;}
-
-/* data highlight row */
-.tongji-stat{
-  background:linear-gradient(90deg,var(--blue-light),rgba(238,244,251,0.4));
-  border:1px solid rgba(0,75,135,0.12);border-radius:12px;
-  display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin:16px 0;overflow:hidden;
+/* ══ POLICY ANCHOR BOX ══ */
+.policy-box{
+  background:var(--red-bg);border:1.5px solid rgba(181,22,42,0.2);
+  border-radius:14px;padding:22px 26px;margin:20px 0;
 }
-.ts-item{text-align:center;padding:20px 16px;border-right:1px solid rgba(0,75,135,0.1);}
-.ts-item:last-child{border-right:none;}
-.ts-num{font-size:32px;font-weight:900;color:var(--brand);margin-bottom:4px;}
-.ts-label{font-size:12.5px;color:var(--ink3);}
+.pb-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.pb-badge{
+  background:var(--red);color:#fff;font-size:10.5px;font-weight:800;
+  letter-spacing:1px;text-transform:uppercase;padding:4px 10px;border-radius:5px;flex-shrink:0;
+}
+.pb-title{font-size:15px;font-weight:700;color:var(--red);}
+.policy-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:10px;}
+.policy-row:last-child{margin-bottom:0;}
+.pr-tag{
+  flex-shrink:0;min-width:90px;padding:3px 8px;border-radius:5px;text-align:center;
+  font-size:11.5px;font-weight:800;background:rgba(181,22,42,0.08);color:var(--red);
+}
+.pr-content{font-size:13.5px;color:var(--ink2);line-height:1.65;}
+.pr-content strong{color:var(--ink);}
 
-/* pricing */
-.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin:16px 0;}
-.price-card{border-radius:14px;padding:22px;border:2px solid var(--border);text-align:center;}
-.price-card.featured{border-color:var(--brand);background:var(--blue-light);}
-.pc-plan{font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
-.price-card.featured .pc-plan{color:var(--brand);}
-.pc-price{font-size:30px;font-weight:900;color:var(--ink);margin-bottom:2px;}
-.pc-unit{font-size:12.5px;color:var(--ink3);}
-.pc-divider{height:1px;background:var(--border);margin:14px 0;}
-.pc-features{list-style:none;padding:0;text-align:left;}
-.pc-features li{font-size:13px;color:var(--ink2);padding:5px 0;display:flex;gap:8px;align-items:flex-start;}
-.pc-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
-.pc-cta{margin-top:16px;padding:10px;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;}
-.price-card.featured .pc-cta{background:var(--brand);color:#fff;}
+/* ══ RISK TABLE ══ */
+.risk-table{
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;margin:20px 0;
+}
+.rt-header{
+  background:linear-gradient(90deg,rgba(0,40,85,0.04),rgba(0,40,85,0.02));
+  padding:12px 20px;display:grid;
+  grid-template-columns:1.2fr 2fr 2fr;
+  gap:16px;border-bottom:1px solid var(--border);
+}
+.rt-header span{font-size:11.5px;font-weight:700;color:var(--ink3);letter-spacing:0.8px;text-transform:uppercase;}
+.rt-row{padding:14px 20px;display:grid;grid-template-columns:1.2fr 2fr 2fr;gap:16px;border-bottom:1px solid var(--border);}
+.rt-row:last-child{border-bottom:none;}
+.rt-row:hover{background:rgba(0,40,85,0.02);}
+.risk-tag{display:inline-block;font-size:12px;font-weight:800;padding:3px 10px;border-radius:5px;}
+.risk-high{background:rgba(181,22,42,0.1);color:var(--red);}
+.risk-med{background:rgba(201,168,76,0.12);color:#8a6a00;}
+.rt-text{font-size:13.5px;color:var(--ink2);line-height:1.6;}
+.rt-text strong{color:var(--ink);}
+
+/* ══ POSITIONING COMPARE ══ */
+.pos-compare{display:grid;grid-template-columns:1fr 1fr;gap:0;margin:20px 0;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.pc-old{background:#fafafa;padding:22px 24px;border-right:1px solid var(--border);}
+.pc-new{background:linear-gradient(145deg,rgba(0,57,122,0.04),rgba(0,87,168,0.06));padding:22px 24px;}
+.pc-header{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;}
+.pc-old .pc-header{color:var(--ink3);}
+.pc-new .pc-header{color:var(--blue);}
+.pc-item{display:flex;gap:8px;font-size:13.5px;color:var(--ink2);padding:6px 0;border-top:1px solid var(--border);}
+.pc-item:first-of-type{border-top:none;}
+.pc-old .pc-item::before{content:'✗';color:#ccc;font-weight:700;flex-shrink:0;}
+.pc-new .pc-item::before{content:'✓';color:var(--blue);font-weight:700;flex-shrink:0;}
+.pc-new .pc-item strong{color:var(--blue);}
+
+/* ══ SOLUTION PILLARS ══ */
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0;}
+.pillar{border-radius:14px;padding:22px;border:1.5px solid var(--border);transition:border-color 0.2s;}
+.pillar:hover{border-color:var(--blue);}
+.pillar-icon{font-size:32px;margin-bottom:12px;}
+.pillar-num{font-size:10px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:5px;}
+.pillar-title{font-size:16px;font-weight:800;color:var(--ink);margin-bottom:8px;}
+.pillar-desc{font-size:13.5px;color:var(--ink2);line-height:1.7;}
+.pillar-link{margin-top:10px;font-size:12.5px;font-weight:700;color:var(--blue);}
+.pillar.p1{background:linear-gradient(145deg,rgba(181,22,42,0.04),var(--white));}
+.pillar.p2{background:linear-gradient(145deg,rgba(0,57,122,0.04),var(--white));}
+.pillar.p3{background:linear-gradient(145deg,rgba(26,122,64,0.04),var(--white));}
+.pillar.p4{background:linear-gradient(145deg,rgba(201,168,76,0.06),var(--white));}
+
+/* ══ HSK MATRIX ══ */
+.hsk-matrix{margin:20px 0;border-radius:14px;border:1px solid var(--border);overflow:hidden;}
+.hm-title{background:var(--navy);color:#fff;padding:12px 20px;font-size:13px;font-weight:700;}
+.hm-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.hm-header{background:rgba(0,40,85,0.05);padding:10px 14px;font-size:11px;font-weight:700;color:var(--ink3);letter-spacing:0.8px;text-transform:uppercase;border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
+.hm-header:last-child{border-right:none;}
+.hm-cell{padding:12px 14px;font-size:13px;color:var(--ink2);border-right:1px solid var(--border);border-bottom:1px solid var(--border);line-height:1.55;}
+.hm-cell:last-child{border-right:none;}
+.hm-row-last .hm-cell{border-bottom:none;}
+.hm-cell strong{color:var(--red);font-size:13px;}
+.hm-cell .risk{color:var(--red);font-size:11.5px;font-weight:700;display:block;margin-top:3px;}
+.hm-cell .tool{color:var(--blue);font-size:11.5px;font-weight:700;display:block;margin-top:3px;}
+
+/* ══ VALUE CHAIN ══ */
+.value-chain{
+  background:linear-gradient(135deg,rgba(0,40,85,0.03),rgba(0,87,168,0.05));
+  border:1px solid rgba(0,87,168,0.12);border-radius:14px;padding:24px;margin:20px 0;
+}
+.vc-title{font-size:13px;font-weight:700;color:var(--navy);margin-bottom:18px;}
+.vc-flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+.vc-step{background:#fff;border:1px solid var(--border);border-radius:10px;padding:10px 16px;text-align:center;flex:1;min-width:110px;}
+.vc-step-label{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.vc-step-sub{font-size:11px;color:var(--ink3);}
+.vc-arrow{color:var(--blue);font-size:20px;font-weight:700;}
+.vc-step.highlight{background:var(--navy);border-color:var(--navy);}
+.vc-step.highlight .vc-step-label{color:#fff;}
+.vc-step.highlight .vc-step-sub{color:rgba(255,255,255,0.6);}
+
+/* ══ STRATEGIC VALUE ══ */
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
+.sv-card{border-radius:12px;padding:20px;border:1px solid var(--border);text-align:center;}
+.sv-num{font-size:34px;font-weight:900;margin-bottom:4px;}
+.sv-label{font-size:12.5px;color:var(--ink3);line-height:1.5;}
+.sv-card.c1 .sv-num{color:var(--red);}
+.sv-card.c2 .sv-num{color:var(--blue);}
+.sv-card.c3 .sv-num{color:var(--green);}
+
+/* ══ FEATURE TABLE ══ */
+.table-wrap{overflow-x:auto;margin:16px 0;border-radius:12px;border:1px solid var(--border);}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+th{padding:11px 16px;text-align:left;background:var(--surface);color:var(--ink3);font-size:11.5px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;border-bottom:1px solid var(--border);}
+td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--ink2);vertical-align:top;line-height:1.65;}
+tr:last-child td{border-bottom:none;}
+tr:hover td{background:rgba(0,40,85,0.015);}
+
+/* ══ PRICING ══ */
+.pricing-grid{display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;margin:16px 0;}
+.price-card{border-radius:14px;padding:24px;border:2px solid var(--border);}
+.price-card.featured{border-color:var(--blue);background:linear-gradient(145deg,rgba(0,57,122,0.04),var(--white));}
+.pc-tier{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink3);margin-bottom:8px;}
+.price-card.featured .pc-tier{color:var(--blue);}
+.pc-name{font-size:18px;font-weight:800;color:var(--ink);margin-bottom:4px;}
+.pc-price{font-size:30px;font-weight:900;color:var(--navy);margin-bottom:2px;}
+.pc-unit{font-size:12.5px;color:var(--ink3);margin-bottom:14px;}
+.pc-div{height:1px;background:var(--border);margin:12px 0;}
+.pc-list{list-style:none;padding:0;}
+.pc-list li{font-size:13px;color:var(--ink2);padding:5px 0;display:flex;gap:8px;align-items:flex-start;border-top:1px solid var(--border);}
+.pc-list li:first-child{border-top:none;}
+.pc-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;}
+.pc-cta{margin-top:14px;width:100%;padding:10px;border-radius:8px;font-size:13.5px;font-weight:700;cursor:pointer;text-align:center;}
+.price-card.featured .pc-cta{background:var(--blue);color:#fff;}
 .price-card:not(.featured) .pc-cta{background:var(--surface);border:1px solid var(--border);color:var(--ink2);}
 
-/* timeline */
-.timeline{margin:16px 0;}
-.tl-item{display:flex;gap:20px;margin-bottom:0;}
-.tl-left{display:flex;flex-direction:column;align-items:center;width:36px;flex-shrink:0;}
-.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--brand);flex-shrink:0;margin-top:4px;}
-.tl-dot.done{background:var(--green);}
+/* ══ HBOX ══ */
+.hbox{border-radius:12px;padding:18px 22px;margin:16px 0;}
+.hbox-blue{background:rgba(0,57,122,0.04);border:1px solid rgba(0,87,168,0.15);}
+.hbox-gold{background:var(--gold-bg);border:1px solid rgba(201,168,76,0.25);}
+.hbox-green{background:var(--green-bg);border:1px solid rgba(26,122,64,0.15);}
+.hbox-red{background:var(--red-bg);border:1px solid rgba(181,22,42,0.12);}
+.hbox-title{font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;margin-bottom:7px;}
+.hbox-blue .hbox-title{color:var(--blue);}
+.hbox-gold .hbox-title{color:#8a6a00;}
+.hbox-green .hbox-title{color:var(--green);}
+.hbox-red .hbox-title{color:var(--red);}
+.hbox p,.hbox ul{margin:0;font-size:14px;}
+.hbox li{margin-bottom:5px;font-size:14px;}
+
+/* ══ TIMELINE ══ */
+.timeline{margin:20px 0;}
+.tl-item{display:flex;gap:18px;}
+.tl-left{display:flex;flex-direction:column;align-items:center;width:34px;flex-shrink:0;}
+.tl-dot{width:13px;height:13px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:4px;}
+.tl-dot.gold{background:var(--gold);}
 .tl-dot.future{background:var(--border);border:2px solid var(--ink3);}
-.tl-line{width:2px;flex:1;background:var(--border);margin:4px 0;}
+.tl-line{width:2px;flex:1;background:var(--border);margin:3px 0;}
 .tl-item:last-child .tl-line{display:none;}
 .tl-right{padding-bottom:24px;}
-.tl-month{font-size:11.5px;font-weight:700;color:var(--brand);margin-bottom:3px;}
+.tl-period{font-size:11.5px;font-weight:700;color:var(--blue);margin-bottom:3px;}
 .tl-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:4px;}
 .tl-desc{font-size:13.5px;color:var(--ink2);line-height:1.65;}
 
-/* ROI */
-.roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0;}
-.roi-card{text-align:center;padding:20px 14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;}
-.roi-num{font-size:32px;font-weight:900;color:var(--brand);margin-bottom:4px;}
-.roi-label{font-size:12.5px;color:var(--ink3);}
-
-/* quote */
-.quote{border-left:4px solid var(--brand);padding:14px 20px;margin:16px 0;background:var(--blue-light);border-radius:0 8px 8px 0;}
-.quote-text{font-size:15px;color:var(--ink2);font-style:italic;line-height:1.75;margin-bottom:6px;}
+/* ══ QUOTE ══ */
+.quote{border-left:4px solid var(--blue);padding:14px 20px;margin:18px 0;background:rgba(0,57,122,0.03);border-radius:0 10px 10px 0;}
+.quote-text{font-size:15px;color:var(--ink2);font-style:italic;line-height:1.78;margin-bottom:6px;}
 .quote-src{font-size:12.5px;color:var(--ink3);font-weight:600;}
 
-/* CTA footer */
-.cta-footer{
-  background:linear-gradient(135deg,var(--brand-dark),var(--brand));
-  padding:40px 56px;text-align:center;
-}
-.cf-title{font-size:24px;font-weight:800;color:#fff;margin-bottom:8px;}
-.cf-sub{font-size:15px;color:rgba(255,255,255,0.7);margin-bottom:24px;}
-.cf-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-.cf-btn{padding:12px 28px;border-radius:8px;font-size:14.5px;font-weight:700;cursor:pointer;}
-.cf-btn-primary{background:#fff;color:var(--brand);}
-.cf-btn-secondary{background:transparent;border:2px solid rgba(255,255,255,0.35);color:#fff;}
-.cf-contact{margin-top:20px;font-size:13px;color:rgba(255,255,255,0.45);}
+/* ══ FOOTER ══ */
+.cta-footer{background:linear-gradient(135deg,var(--navy),var(--navy2));padding:44px 60px;text-align:center;}
+.cf-title{font-size:26px;font-weight:900;color:#fff;margin-bottom:10px;}
+.cf-sub{font-size:15px;color:rgba(255,255,255,0.65);margin-bottom:28px;max-width:560px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.cf-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;}
+.cf-btn{padding:13px 30px;border-radius:8px;font-size:15px;font-weight:700;cursor:pointer;}
+.cf-primary{background:var(--gold);color:var(--navy);}
+.cf-secondary{background:transparent;border:2px solid rgba(255,255,255,0.3);color:#fff;}
+.cf-divider{height:1px;background:rgba(255,255,255,0.1);margin-bottom:22px;}
+.cf-contact{font-size:13px;color:rgba(255,255,255,0.4);}
+.cf-appendix{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:16px 22px;margin-top:22px;text-align:left;}
+.ca-title{font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:8px;}
+.ca-list{list-style:none;display:flex;flex-wrap:wrap;gap:6px 20px;}
+.ca-list li{font-size:12.5px;color:rgba(255,255,255,0.55);}
+.ca-list li::before{content:'§ ';}
 
 @media print{.page{box-shadow:none;}.cta-footer{break-inside:avoid;}}
 </style>
@@ -179,320 +285,464 @@ tr:last-child td{border-bottom:none;}
 <body>
 <div class="page">
 
-<!-- ── HEADER ── -->
-<div class="header">
-  <div class="h-kicker">
-    🤝 机构合作提案 · 保密文件
-    <span class="h-kicker-badge">定向提案</span>
-  </div>
-  <div class="school-banner">
-    <div class="sb-flag">🏫</div>
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="cover-watermark">机密 · 定向提案</div>
+  <div class="cover-kicker"><div class="cover-kicker-dot"></div>战略合作提案 · 2026年度</div>
+  <div class="cover-school">
     <div>
-      <div class="sb-name">同济大学留学生学院</div>
-      <div class="sb-dept">International Students College · Tongji University</div>
+      <div class="cs-name">同济大学留学生学院</div>
+      <div class="cs-en">International Students College · Tongji University</div>
     </div>
   </div>
-  <div class="h-title">ShadowSpeak 影说<br><span>× 同济大学留学生学院战略合作方案</span></div>
-  <div class="h-subtitle">AI驱动的中文口语精准训练工具——帮助同济留学生突破发音瓶颈，从课堂延伸到课外，全面提升口语实力</div>
-  <div class="h-meta">
-    <div class="h-meta-item"><strong>提案对象</strong>同济大学留学生学院</div>
-    <div class="h-meta-item"><strong>合作模式</strong>机构年度授权 + 试点先行</div>
-    <div class="h-meta-item"><strong>免费试点</strong>1 个学期 · 零风险</div>
-    <div class="h-meta-item"><strong>提案版本</strong>v1.0 · 2026</div>
+  <div class="cover-title">
+    <em>ShadowSpeak 影说</em><br>
+    留学生汉语学业保障<br>数字化解决方案
+  </div>
+  <div class="cover-subtitle">
+    依据同济大学留学生管理规定中的汉语水平考核制度，围绕学生学籍保留、奖学金续签与学位获取的核心利益，构建贯通「入学前—在读中—毕业前」的中文能力全周期支撑体系
+  </div>
+  <div class="cover-pills">
+    <span class="cpill">对接《同济大学留学生预科学籍管理条例》</span>
+    <span class="cpill">衔接 HSK 4–6 级学位语言门槛</span>
+    <span class="cpill">支持奖学金年度评审数据</span>
+    <span class="cpill gold">★ 战略级合作 · 非产品销售</span>
+  </div>
+  <div class="cover-meta">
+    <div class="cm-item"><div class="cm-label">提案层级</div><div class="cm-val">学院战略合作</div></div>
+    <div class="cm-item"><div class="cm-label">合作模式</div><div class="cm-val">平台共建 · 数据共享</div></div>
+    <div class="cm-item"><div class="cm-label">试点规划</div><div class="cm-val">1学期试点 → 全院铺开</div></div>
+    <div class="cm-item"><div class="cm-label">文件版本</div><div class="cm-val">v2.0 · 2026</div></div>
+  </div>
+</div>
+
+<!-- ══ EXEC SUMMARY ══ -->
+<div class="exec-bar">
+  <div class="eb-icon">📋</div>
+  <div class="eb-text">
+    <strong>执行摘要：</strong>同济大学在校留学生面临明确的汉语考核硬门槛——预科结业须达 HSK 3 级、本硕博学位申请须达 HSK 4–5 级（最高 HSK 5≥210 分 + HSKK 中级≥60 分）。语言能力不达标直接导致<strong>奖学金取消、学籍注销、学位无法授予</strong>。ShadowSpeak 提案在此基础上从「语言学习工具」重新定位为<strong>「留学生汉语学业风险管理基础设施」</strong>，帮助同济实现留学生培养质量提升、学业风险预警与国际招生竞争力强化三重战略目标。
   </div>
 </div>
 
 <div class="body">
 
-  <!-- ── 0. 同济数据背景 ── -->
-  <div class="sec">
-    <div class="sec-label">Context</div>
-    <div class="sec-title">同济留学生口语教学现状</div>
-    <p>同济大学是全国接收来华留学生规模最大的高校之一，留学生学院承担着来自全球 150+ 国家学生的汉语教学任务。然而在口语训练环节，仍面临一个结构性痛点：<strong>课堂纠音资源有限，课外练习缺乏有效工具</strong>。</p>
-    <div class="tongji-stat">
-      <div class="ts-item">
-        <div class="ts-num">150+</div>
-        <div class="ts-label">生源国家与地区</div>
-      </div>
-      <div class="ts-item">
-        <div class="ts-num">数千</div>
-        <div class="ts-label">在读国际学生规模</div>
-      </div>
-      <div class="ts-item">
-        <div class="ts-num">4声调</div>
-        <div class="ts-label">留学生公认最难掌握的中文特征</div>
-      </div>
+<!-- ══ SECTION 1: POLICY ANCHOR ══ -->
+<div class="sec">
+  <div class="sec-label red">Policy Foundation · 政策依据</div>
+  <div class="sec-title">同济留学生管理规定中的汉语考核硬约束</div>
+  <div class="sec-lead">ShadowSpeak 的定位不是来自外部的语言学习需求，而是直接锚定同济大学现行管理规定中的刚性考核要求。以下所有条款均来自同济大学留学生学院官方招生简章及学籍管理条例。</div>
+
+  <div class="policy-box">
+    <div class="pb-header">
+      <div class="pb-badge">本科入学</div>
+      <div class="pb-title">语言门槛直接影响录取资格</div>
     </div>
-    <div class="hbox hbox-blue">
-      <div class="hbox-title">💡 为什么是同济？</div>
-      <p>同济的留学生群体具备强烈的学习动机（学位要求、HSK 过级压力）和高学历背景，对<strong>高质量、可量化的学习工具</strong>接受度高。贵院在国际中文教育领域的品牌影响力，也使 ShadowSpeak 与同济的合作具备显著的标杆示范价值。</p>
+    <div class="policy-row"><div class="pr-tag">理工类</div><div class="pr-content">新版 <strong>HSK 4 级（总分≥180分）</strong> — 低于此分数线直接不予录取</div></div>
+    <div class="policy-row"><div class="pr-tag">建筑/医/经管</div><div class="pr-content">新版 <strong>HSK 4 级（总分≥200分）</strong> — 分数线高于一般理工类要求</div></div>
+    <div class="policy-row"><div class="pr-tag">文科/艺术类</div><div class="pr-content">新版 <strong>HSK 5 级（总分≥180分）</strong> — 要求最高</div></div>
+    <div class="policy-row"><div class="pr-tag">汉语言专业</div><div class="pr-content">HSK 4级（≥180分）入读一年级；HSK 5级（≥210分）方可申请直升三年级</div></div>
+  </div>
+
+  <div class="policy-box">
+    <div class="pb-header">
+      <div class="pb-badge">硕博入学</div>
+      <div class="pb-title">中文授课研究生学位申请语言门槛</div>
+    </div>
+    <div class="policy-row"><div class="pr-tag">理工类硕/博</div><div class="pr-content">新版 <strong>HSK 4 级（总分≥180分）</strong></div></div>
+    <div class="policy-row"><div class="pr-tag">建筑/医/经管</div><div class="pr-content">新版 <strong>HSK 4 级（总分≥200分）</strong></div></div>
+    <div class="policy-row"><div class="pr-tag">文科/艺术类</div><div class="pr-content">新版 <strong>HSK 5 级（总分≥180分）</strong></div></div>
+    <div class="policy-row"><div class="pr-tag">汉语国际教育</div><div class="pr-content">新版 <strong>HSK 5 级（总分≥210分）+ HSKK 中级（≥60分）</strong> — 口语与笔试双门槛</div></div>
+  </div>
+
+  <div class="policy-box">
+    <div class="pb-header">
+      <div class="pb-badge">预科管理条例</div>
+      <div class="pb-title">第35条：HSK 未达标直接不予结业</div>
+    </div>
+    <div class="policy-row"><div class="pr-tag">结业条件</div><div class="pr-content">完成预科全部课程 + 考核合格 + <strong>HSK 成绩不低于初中等 3 级</strong>，三者缺一不可</div></div>
+    <div class="policy-row"><div class="pr-tag">奖学金联动</div><div class="pr-content">中国政府奖学金生须同时通过<strong>奖学金年度评审</strong>，语言未达标可直接影响奖学金续签资格</div></div>
+    <div class="policy-row"><div class="pr-tag">退学风险</div><div class="pr-content">未经请假连续两周未参加教学活动，或不符合学籍规定，留学生办公室有权注销学籍</div></div>
+  </div>
+
+  <div class="hbox hbox-red">
+    <div class="hbox-title">🔑 核心洞察：语言不达标 = 直接影响学业存续</div>
+    <p>HSK 考核不是「锦上添花」的学习目标——它是<strong>留在同济、续签奖学金、获得学位的硬性生死线</strong>。这意味着同济留学生学院在汉语教学成效上承担着直接的管理责任，任何能系统性降低学生语言风险的工具，都具备战略级合作价值。</p>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ══ SECTION 2: RISK ANALYSIS ══ -->
+<div class="sec">
+  <div class="sec-label red">Risk Analysis · 风险分析</div>
+  <div class="sec-title">当前模式下，学院面临的三层管理风险</div>
+  <div class="sec-lead">从学院管理视角看，留学生汉语能力不足不是个人学习问题，而是系统性的<strong>招生质量风险、学籍管理风险与机构声誉风险</strong>。</div>
+
+  <div class="risk-table">
+    <div class="rt-header">
+      <span>风险类型</span>
+      <span>当前现状（无系统支持）</span>
+      <span>直接后果</span>
+    </div>
+    <div class="rt-row">
+      <div><span class="risk-tag risk-high">🔴 高风险</span><div class="rt-text" style="margin-top:6px;"><strong>学籍/奖学金风险</strong></div></div>
+      <div class="rt-text">学生在校期间语言能力停滞甚至退步，预科结业、年度评审、毕业答辩均存在未达 HSK 要求的风险</div>
+      <div class="rt-text">奖学金取消 → 学生回国 → <strong>学院培养完成率下降，招生声誉受损</strong>；政府奖学金生退学须上报国家留学基金委及大使馆</div>
+    </div>
+    <div class="rt-row">
+      <div><span class="risk-tag risk-high">🔴 高风险</span><div class="rt-text" style="margin-top:6px;"><strong>课外学习黑盒风险</strong></div></div>
+      <div class="rt-text">教师无法知晓学生课外是否在有效练习、发音弱点分布在哪，只能在考试时才发现问题已积重难返</div>
+      <div class="rt-text">问题发现过晚，补救窗口关闭；课堂教学资源无法精准投放，<strong>教学ROI低下</strong></div>
+    </div>
+    <div class="rt-row">
+      <div><span class="risk-tag risk-med">🟡 中风险</span><div class="rt-text" style="margin-top:6px;"><strong>招生竞争力风险</strong></div></div>
+      <div class="rt-text">同类高校（如复旦、交大、浙大）若提供更完善的语言学习支持体系，将对同济国际招生构成差异化竞争</div>
+      <div class="rt-text">高质量留学生生源向竞争对手流失；<strong>政府奖学金指标分配可能受培养质量数据影响</strong></div>
+    </div>
+    <div class="rt-row">
+      <div><span class="risk-tag risk-med">🟡 中风险</span><div class="rt-text" style="margin-top:6px;"><strong>多国籍差异化教学风险</strong></div></div>
+      <div class="rt-text">150+国家学生发音问题高度个性化（声调/声母/卷舌），现有课堂工具无法支持个性化干预</div>
+      <div class="rt-text">高语言风险学生未被识别，错过早期干预最佳时机；<strong>班级平均 HSK 通过率受少数学生拖累</strong></div>
     </div>
   </div>
-  <div class="divider"></div>
+</div>
+<div class="divider"></div>
 
-  <!-- ── 1. 您面临的挑战 ── -->
-  <div class="sec">
-    <div class="sec-label">Pain Points</div>
-    <div class="sec-title">同济留学生正在面临的发音困境</div>
-    <p>基于对来华留学生汉语口语习得的深度研究，我们识别出以下在同济留学生中普遍存在的四大挑战：</p>
-    <div class="two-col">
-      <div class="col-card">
-        <div class="cc-icon">😤</div>
-        <div class="cc-title">多语言背景导致发音问题高度分散</div>
-        <div class="cc-desc">同济学生来自 150+ 国家，欧洲学生声调弱、中亚学生翘舌音混淆、日韩学生浊音干扰——每位学生的发音错误模式不同，老师一对一纠音成本极高。</div>
-      </div>
-      <div class="col-card">
-        <div class="cc-icon">📉</div>
-        <div class="cc-title">课外练习缺乏即时反馈</div>
-        <div class="cc-desc">留学生课后用 YouTube 视频或语音助手练习，无法获得声调级的精准纠正。错误发音在大量自练中反而被固化，形成「练越多、错越深」的反效果。</div>
-      </div>
-      <div class="col-card">
-        <div class="cc-icon">🔍</div>
-        <div class="cc-title">老师缺乏课外学习数据支撑</div>
-        <div class="cc-desc">任课教师无法了解学生课后练习情况与发音弱点分布，课堂教学针对性不足，难以实现「因材施教」。</div>
-      </div>
-      <div class="col-card">
-        <div class="cc-icon">😰</div>
-        <div class="cc-title">HSK/HSKK 备考支持匮乏</div>
-        <div class="cc-desc">许多同济留学生需通过 HSK 5/6 级或 HSKK 考试作为学位要求，但市面上几乎没有专项口语模拟工具，备考只能靠自己「对着镜子说话」。</div>
-      </div>
+<!-- ══ SECTION 3: REPOSITIONING ══ -->
+<div class="sec">
+  <div class="sec-label gold">Strategic Repositioning · 战略重新定位</div>
+  <div class="sec-title">从「语言学习App」到「留学生汉语学业保障基础设施」</div>
+
+  <div class="pos-compare">
+    <div class="pc-old">
+      <div class="pc-header">❌ 旧定位（语言学习产品）</div>
+      <div class="pc-item">一款帮助学生练习发音的App</div>
+      <div class="pc-item">以用户自愿使用为前提</div>
+      <div class="pc-item">成效依赖学生自律性</div>
+      <div class="pc-item">数据仅服务学生个人</div>
+      <div class="pc-item">学校采购逻辑：「是否好用」</div>
+      <div class="pc-item">与学校管理职能无关联</div>
     </div>
-    <div class="quote">
-      <div class="quote-text">「来自不同国家的学生发音问题差异很大，课堂上根本无法一一针对。他们课后也缺少有效工具，同样的声调错误学期结束了还没有改过来。」</div>
-      <div class="quote-src">— 来华留学生汉语教学教师（访谈记录，2025）</div>
+    <div class="pc-new">
+      <div class="pc-header">✅ 新定位（学业保障基础设施）</div>
+      <div class="pc-item"><strong>与HSK考核制度直接衔接的学业风险预警系统</strong></div>
+      <div class="pc-item"><strong>课外中文学习的数据化监测与管理工具</strong></div>
+      <div class="pc-item"><strong>奖学金年度评审的汉语能力佐证数据来源</strong></div>
+      <div class="pc-item"><strong>教师因材施教的数字化决策支持系统</strong></div>
+      <div class="pc-item"><strong>学校采购逻辑：「解决管理风险」</strong></div>
+      <div class="pc-item"><strong>纳入留学生培养质量提升的战略工程</strong></div>
     </div>
   </div>
-  <div class="divider"></div>
 
-  <!-- ── 2. 解决方案 ── -->
-  <div class="sec">
-    <div class="sec-label">Our Solution</div>
-    <div class="sec-title">ShadowSpeak 如何为同济学生提供差异化支持</div>
-    <p>ShadowSpeak 是<strong>专为来华留学生设计的中文口语精准训练 APP</strong>，与同济现有课堂教学形成互补，构建「课堂精讲 + 课外精练」的完整闭环：</p>
-
-    <div class="hbox hbox-blue" style="margin-top:20px;">
-      <div class="hbox-title">🎙️ 核心能力 1：声调级 AI 发音精准纠错</div>
-      <p>不只给一个总分——<strong>精确定位每个字的声调偏差、声母/韵母错误</strong>，并给出「你把第3声发成了第4声，尾部需要上扬」的可解释反馈。同济来自欧洲、中亚、东南亚学生的母语干扰模式不同，AI 能针对个体给出个性化反馈。</p>
-    </div>
-
-    <div class="hbox hbox-gold">
-      <div class="hbox-title">🔁 核心能力 2：完整影子跟读工作流</div>
-      <p>配套同济汉语课教学进度的<strong>分级素材库（对应 HSK 1–4）</strong>，支持 0.5×–1.25× 可调速跟读 → 逐句录音 → AI 波形对比 → 逐字错误归因 → 一键加入错题本。学生在宿舍、图书馆随时可练，不依赖任何额外设备。</p>
-    </div>
-
-    <div class="hbox hbox-green">
-      <div class="hbox-title">📒 核心能力 3：发音错题本（间隔复习）</div>
-      <p>基于<strong>艾宾浩斯遗忘曲线</strong>，自动管理每位学生的个性化发音错误，在最佳时间推送复习提醒。同济学生多国母语背景造成的发音差异，在错题本中<strong>完全个性化记录和追踪</strong>。</p>
-    </div>
-
-    <h3 style="font-size:17px;font-weight:700;color:var(--ink);margin:28px 0 12px;">🏫 专为同济定制：教师管理后台</h3>
-    <p>为留学生学院教师提供<strong>班级学情 Dashboard</strong>，支持多班管理，让教学更有据可依：</p>
-    <ul>
-      <li>按班级 / 国籍 / HSK 等级筛选学生发音弱点分布</li>
-      <li>全班最高频错误音节排行（本周课堂可优先讲解）</li>
-      <li>个别学生练习时长与发音分数趋势，识别「需要关注」的学生</li>
-      <li>学期末发音进步报告（可作为教学成效佐证材料）</li>
-      <li>支持与同济现有教务系统导出名单对接（CSV 批量导入）</li>
-    </ul>
-  </div>
-  <div class="divider"></div>
-
-  <!-- ── 3. 合作方案 ── -->
-  <div class="sec">
-    <div class="sec-label">Partnership Model</div>
-    <div class="sec-title">为同济量身定制的合作方案</div>
-
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="pc-plan">单班试点版</div>
-        <div class="pc-price">¥3,800</div>
-        <div class="pc-unit">/ 学期 · 1 个班（≤35人）</div>
-        <div class="pc-divider"></div>
-        <ul class="pc-features">
-          <li>全功能 App 学生端访问</li>
-          <li>HSK 1–3 同步素材库</li>
-          <li>发音错题本 & 间隔复习</li>
-          <li>教师基础 Dashboard</li>
-          <li>邮件 + 微信技术支持</li>
-        </ul>
-        <div class="pc-cta">单班起步</div>
-      </div>
-      <div class="price-card featured">
-        <div class="pc-plan">⭐ 推荐 · 学院标准版</div>
-        <div class="pc-price">¥18,000</div>
-        <div class="pc-unit">/ 学年 · 全院多班（≤200人）</div>
-        <div class="pc-divider"></div>
-        <ul class="pc-features">
-          <li>全部单班版功能</li>
-          <li>HSK 1–4 + HSKK 模拟题库</li>
-          <li>多班级管理中心</li>
-          <li>月度全院发音进步报告</li>
-          <li>按国籍分组发音分析</li>
-          <li>学期末教学成效汇报 PPT</li>
-          <li>专属教学顾问 1v1 支持</li>
-        </ul>
-        <div class="pc-cta">申请免费试点</div>
-      </div>
-      <div class="price-card">
-        <div class="pc-plan">深度合作版</div>
-        <div class="pc-price">深度定制</div>
-        <div class="pc-unit">/ 战略合作 · 长期协议</div>
-        <div class="pc-divider"></div>
-        <ul class="pc-features">
-          <li>全部标准版功能</li>
-          <li>同济专属素材库共建</li>
-          <li>课程系统 API 集成</li>
-          <li>联合科研合作机会</li>
-          <li>挂牌「同济大学合作伙伴」</li>
-          <li>优先获取产品新功能</li>
-        </ul>
-        <div class="pc-cta">洽谈战略合作</div>
-      </div>
-    </div>
-
-    <div class="hbox hbox-green" style="margin-top:8px;">
-      <div class="hbox-title">🎁 同济专属试点政策（零风险）</div>
-      <p>向同济大学留学生学院提供 <strong>1 个学期免费试点</strong>（建议先以 1–2 个中文班级起步），包含完整标准版功能 + 全程教学顾问陪跑。试点期内无需签署付费合同，试点结束后由贵院根据实际效果决定是否续约扩大规模。</p>
+  <div class="value-chain">
+    <div class="vc-title">📊 ShadowSpeak 在同济留学生培养价值链中的定位</div>
+    <div class="vc-flow">
+      <div class="vc-step"><div class="vc-step-label">招生入学</div><div class="vc-step-sub">HSK 门槛筛选</div></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-step highlight"><div class="vc-step-label">在读中文学习</div><div class="vc-step-sub">ShadowSpeak 介入点</div></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-step"><div class="vc-step-label">奖学金评审</div><div class="vc-step-sub">年度考核</div></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-step"><div class="vc-step-label">学位授予</div><div class="vc-step-sub">HSK 毕业要求</div></div>
+      <div class="vc-arrow">→</div>
+      <div class="vc-step"><div class="vc-step-label">校友影响力</div><div class="vc-step-sub">招生口碑</div></div>
     </div>
   </div>
-  <div class="divider"></div>
+</div>
+<div class="divider"></div>
 
-  <!-- ── 4. ROI ── -->
-  <div class="sec">
-    <div class="sec-label">ROI & Value</div>
-    <div class="sec-title">可量化的教学价值</div>
-    <div class="roi-grid">
-      <div class="roi-card">
-        <div class="roi-num">¥90</div>
-        <div class="roi-label">标准版折合每生每学年成本（200人规模）</div>
-      </div>
-      <div class="roi-card">
-        <div class="roi-num">3×</div>
-        <div class="roi-label">学生课外发音练习频率提升（对比无工具）</div>
-      </div>
-      <div class="roi-card">
-        <div class="roi-num">2h+</div>
-        <div class="roi-label">教师每周节省的重复纠音课堂时间</div>
-      </div>
-    </div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>对比维度</th><th>现状（无工具）</th><th>引入 ShadowSpeak 后</th></tr></thead>
-        <tbody>
-          <tr><td>发音反馈速度</td><td>课堂等待，最快 1 周</td><td><strong>录音结束后 2 秒内</strong></td></tr>
-          <tr><td>发音错误定位精度</td><td>学生只知道「发音不标准」</td><td><strong>逐字 · 声调/声母/韵母级精准定位</strong></td></tr>
-          <tr><td>课外练习结构化程度</td><td>无结构，完全依赖自律</td><td><strong>分级素材 + 错题本 + 智能推送复习</strong></td></tr>
-          <tr><td>多国籍学生差异化管理</td><td>统一授课，无法个性化</td><td><strong>按学生背景生成个性化错误档案</strong></td></tr>
-          <tr><td>教师对课外学习的可见性</td><td>完全不可见</td><td><strong>实时 Dashboard · 班级发音学情一览</strong></td></tr>
-          <tr><td>HSKK/HSK 口语备考支持</td><td>几乎为零</td><td><strong>专项模拟题库 + AI 评分 + 弱点报告</strong></td></tr>
-        </tbody>
-      </table>
+<!-- ══ SECTION 4: SOLUTION ══ -->
+<div class="sec">
+  <div class="sec-label">Solution Architecture · 解决方案</div>
+  <div class="sec-title">四大能力支柱，直接对接同济管理需求</div>
+
+  <!-- HSK Matrix -->
+  <div class="hsk-matrix">
+    <div class="hm-title">📋 ShadowSpeak 功能与同济 HSK 考核要求的精准映射</div>
+    <div class="hm-grid">
+      <div class="hm-header">学生层次</div>
+      <div class="hm-header">同济规定语言门槛</div>
+      <div class="hm-header">核心学业风险</div>
+      <div class="hm-header">ShadowSpeak 支撑功能</div>
+      <div class="hm-cell">预科生</div>
+      <div class="hm-cell"><strong>HSK 3 级（结业硬条件）</strong></div>
+      <div class="hm-cell"><span class="risk">结业失败 → 奖学金取消</span></div>
+      <div class="hm-cell"><span class="tool">→ HSK 1–3 影子跟读素材库 + 逐日发音进步追踪</span></div>
+      <div class="hm-cell">本科理工类</div>
+      <div class="hm-cell"><strong>HSK 4 ≥180分</strong></div>
+      <div class="hm-cell"><span class="risk">无法升级/毕业</span></div>
+      <div class="hm-cell"><span class="tool">→ HSK 4 专项口语练习 + 发音错题本间隔复习</span></div>
+      <div class="hm-cell">本科医/建/经管</div>
+      <div class="hm-cell"><strong>HSK 4 ≥200分（高线）</strong></div>
+      <div class="hm-cell"><span class="risk">高分要求失败风险更高</span></div>
+      <div class="hm-cell"><span class="tool">→ 专业词汇场景素材 + 高频考点强化练习</span></div>
+      <div class="hm-cell">硕士研究生</div>
+      <div class="hm-cell"><strong>HSK 5 ≥180–210分</strong></div>
+      <div class="hm-cell"><span class="risk">无法提交学位论文</span></div>
+      <div class="hm-cell"><span class="tool">→ HSK 5 学术口语专项 + AI 模拟答辩练习</span></div>
+      <div class="hm-cell hm-row-last">汉语国际教育专业</div>
+      <div class="hm-cell hm-row-last"><strong>HSK 5 ≥210 + HSKK 中级≥60</strong></div>
+      <div class="hm-cell hm-row-last"><span class="risk">双考核失败风险最高</span></div>
+      <div class="hm-cell hm-row-last"><span class="tool">→ HSKK 朗读/复述/回答全题型模拟</span></div>
     </div>
   </div>
-  <div class="divider"></div>
 
-  <!-- ── 5. 合作流程 ── -->
-  <div class="sec">
-    <div class="sec-label">Onboarding Process</div>
-    <div class="sec-title">从洽谈到全面落地，清晰可控</div>
-    <div class="timeline">
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot done"></div><div class="tl-line"></div></div>
-        <div class="tl-right">
-          <div class="tl-month">第 1 周</div>
-          <div class="tl-title">✉️ 需求对齐 & 方案确认</div>
-          <div class="tl-desc">与留学生学院主任及相关课程负责人进行 45 分钟线上/线下会议，了解同济现有课程体系、班级结构、学生母语背景分布，确定试点班级与时间节点。</div>
-        </div>
+  <div class="pillars">
+    <div class="pillar p1">
+      <div class="pillar-icon">🎙️</div>
+      <div class="pillar-num">支柱 01 · 核心技术</div>
+      <div class="pillar-title">声调级 AI 实时发音纠错</div>
+      <div class="pillar-desc">精确定位每个字的声调/声母/韵母偏差，给出「第3声发成第4声，尾部需上扬」的可解释反馈，而非仅给总分。150+国家学生母语干扰模式不同，AI 针对个体给出<strong>个性化纠正路径</strong>。</div>
+      <div class="pillar-link">→ 支撑 HSK 口语准确率提升</div>
+    </div>
+    <div class="pillar p2">
+      <div class="pillar-icon">🔁</div>
+      <div class="pillar-num">支柱 02 · 核心工具</div>
+      <div class="pillar-title">完整影子跟读闭环</div>
+      <div class="pillar-desc">分级素材库（HSK 1–5）→ 可调速跟读 → 逐句录音 → AI 波形对比 → 逐字错误归因 → 错题本收录 → 间隔复习推送。不是碎片化练习，而是<strong>系统化语言能力构建流程</strong>。</div>
+      <div class="pillar-link">→ 支撑 HSK 笔试口语双轨提升</div>
+    </div>
+    <div class="pillar p3">
+      <div class="pillar-icon">📒</div>
+      <div class="pillar-num">支柱 03 · 核心创新</div>
+      <div class="pillar-title">发音错题本（全球首创）</div>
+      <div class="pillar-desc">基于艾宾浩斯遗忘曲线，自动管理每位学生的个性化发音错误档案，在最优时间推送复习。<strong>将「语言习得」的随机性转化为可管理的学习进度</strong>，直接对接奖学金评审中的「学习积极性」考量指标。</div>
+      <div class="pillar-link">→ 可量化展示学生学习投入度</div>
+    </div>
+    <div class="pillar p4">
+      <div class="pillar-icon">🏫</div>
+      <div class="pillar-num">支柱 04 · 管理工具</div>
+      <div class="pillar-title">学院级学情管理平台</div>
+      <div class="pillar-desc">教师 Dashboard：全院/班级/个人三层数据视图；HSK 距离目标差距预警；高风险学生自动标记；月度学情报告可导出，<strong>直接支持奖学金评审与教学质量汇报</strong>。</div>
+      <div class="pillar-link">→ 变「黑盒课外」为可视化管理</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ══ SECTION 5: STRATEGIC VALUE ══ -->
+<div class="sec">
+  <div class="sec-label green">Strategic Value · 战略价值</div>
+  <div class="sec-title">三个维度的机构战略价值</div>
+  <div class="sv-grid">
+    <div class="sv-card c1">
+      <div class="sv-num">↓ 风险</div>
+      <div class="sv-label">降低因语言未达标导致的<br>学籍注销与奖学金取消率</div>
+    </div>
+    <div class="sv-card c2">
+      <div class="sv-num">↑ 质量</div>
+      <div class="sv-label">留学生培养完成率与<br>HSK 达标率可量化提升</div>
+    </div>
+    <div class="sv-card c3">
+      <div class="sv-num">→ 竞争力</div>
+      <div class="sv-label">「AI赋能中文教学」成为同济<br>国际招生的差异化品牌亮点</div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>战略目标</th><th>当前痛点</th><th>ShadowSpeak 如何解决</th><th>可量化成效</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>奖学金年度评审质量</strong></td>
+          <td>语言进步数据靠教师主观判断，缺乏客观证据</td>
+          <td>提供每生每周练习时长、发音分数趋势、HSK距离差值等结构化数据</td>
+          <td>评审依据从「印象分」到<strong>数据驱动</strong></td>
+        </tr>
+        <tr>
+          <td><strong>预科结业率</strong></td>
+          <td>部分预科生临近考试才发现 HSK 3 级未达标，补救过晚</td>
+          <td>入学第1天起建立语言能力基线，提前6–8周预警 HSK 达标风险</td>
+          <td>预估预科 HSK 达标率提升 <strong>15–25%</strong></td>
+        </tr>
+        <tr>
+          <td><strong>中文授课学位完成率</strong></td>
+          <td>学生 HSK 入学时达标，在读期间能力停滞甚至退步</td>
+          <td>全学期持续练习数据追踪，发现能力退步即预警，早期干预</td>
+          <td>减少因语言问题导致的<strong>休学、延毕</strong>事件</td>
+        </tr>
+        <tr>
+          <td><strong>国际招生竞争力</strong></td>
+          <td>同类高校汉语教学支持体系相差无几，难以形成差异化</td>
+          <td>同济可对外宣称「配备 AI 个性化汉语辅助系统，确保语言达标」</td>
+          <td>招生材料增加<strong>可量化的语言支持承诺</strong></td>
+        </tr>
+        <tr>
+          <td><strong>教师教学效率</strong></td>
+          <td>课外辅导时间被低效重复纠音占用，无法专注高阶教学</td>
+          <td>AI 承担基础发音纠正，教师聚焦语法、语用、文化理解等高层次内容</td>
+          <td>教师每周节省 <strong>2–3 小时</strong>重复性纠音工作</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="hbox hbox-gold">
+    <div class="hbox-title">🏆 同济独特优势：标杆示范效应</div>
+    <p>作为全国接收来华留学生规模最大的高校之一，同济若率先建立「AI 辅助汉语学业保障体系」，将在教育部国际学生培养质量评估、政府奖学金续签审核，以及"双一流"高校国际化建设考核中形成<strong>可复制推广的标杆经验</strong>，进一步强化同济在来华留学教育领域的话语权。</p>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ══ SECTION 6: COOPERATION ══ -->
+<div class="sec">
+  <div class="sec-label">Cooperation Model · 合作模式</div>
+  <div class="sec-title">战略合作框架，而非简单软件采购</div>
+  <p>本提案提议以<strong>战略合作协议</strong>而非单次软件采购的形式推进，双方共建「同济大学留学生汉语学业保障平台」，在数据、内容、品牌三个层面形成深度绑定。</p>
+
+  <div class="pricing-grid">
+    <div class="price-card">
+      <div class="pc-tier">第一阶段</div>
+      <div class="pc-name">试点验证</div>
+      <div class="pc-price">免费</div>
+      <div class="pc-unit">1个学期 · 2–3个试点班</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>预科班 + 1个本科中文班覆盖</li>
+        <li>完整 App 功能全开放</li>
+        <li>教师 Dashboard 基础版</li>
+        <li>期末出具学情分析报告</li>
+        <li>全程教学顾问陪跑</li>
+      </ul>
+      <div class="pc-cta">低风险启动</div>
+    </div>
+    <div class="price-card featured">
+      <div class="pc-tier">⭐ 核心阶段</div>
+      <div class="pc-name">全院战略合作</div>
+      <div class="pc-price">¥28,000</div>
+      <div class="pc-unit">/ 学年 · 全院留学生（300人以内）</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>全院学生 App 使用权限</li>
+        <li>HSK 1–5 分级素材全库</li>
+        <li>HSKK 口语模拟全题型</li>
+        <li>学院级多层次管理 Dashboard</li>
+        <li>HSK 风险预警自动推送</li>
+        <li>奖学金评审数据报告模块</li>
+        <li>学期末培养质量汇报 PPT</li>
+        <li>专属客户成功经理</li>
+      </ul>
+      <div class="pc-cta">签署战略合作协议</div>
+    </div>
+    <div class="price-card">
+      <div class="pc-tier">深度共建阶段</div>
+      <div class="pc-name">同济联合共建</div>
+      <div class="pc-price">定制</div>
+      <div class="pc-unit">/ 长期战略协议</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>同济专属汉语素材库共建</li>
+        <li>联合申报教育科研项目</li>
+        <li>论文/报告数据授权支持</li>
+        <li>挂牌「同济大学合作伙伴」</li>
+        <li>产品路线图优先影响权</li>
+        <li>国内外推广联合背书</li>
+      </ul>
+      <div class="pc-cta">战略共建洽谈</div>
+    </div>
+  </div>
+
+  <div class="hbox hbox-blue">
+    <div class="hbox-title">🤝 建议合作模式：数据共享协议</div>
+    <p>ShadowSpeak 向同济提供全量匿名化学生练习数据（用于学院教学质量研究），同济授权 ShadowSpeak 在推广材料中使用「同济大学合作伙伴」标识，并共同申报相关教育科技研究项目。<strong>这不是一次软件采购，而是双向赋能的战略联盟。</strong></p>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ══ SECTION 7: ONBOARDING ══ -->
+<div class="sec">
+  <div class="sec-label">Implementation · 落地规划</div>
+  <div class="sec-title">分阶段落地，全程可控</div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-period">第 1–2 周 · 对齐阶段</div>
+        <div class="tl-title">🏛️ 战略意向对齐</div>
+        <div class="tl-desc">与留学生学院院长/主任及相关课程负责人召开战略沟通会议（建议60分钟），确认合作定位（学业保障 vs 语言工具）、数据协议框架、试点班级选择（建议覆盖预科 + 本科中文班各1个），以及第一学期验收指标。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-right">
-          <div class="tl-month">第 2 周</div>
-          <div class="tl-title">🔧 账号配置 & 教师培训</div>
-          <div class="tl-desc">根据同济教务系统导出名单批量开通学生账号（5 分钟完成）；为试点教师提供 60 分钟操作培训（含 Dashboard 使用 + 如何将 App 融入课程作业设计）。</div>
-        </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-period">第 3 周 · 配置阶段</div>
+        <div class="tl-title">🔧 系统配置 & 教师赋能</div>
+        <div class="tl-desc">根据同济教务名单批量开通学生账号（按班级分组，5分钟完成）；为试点教师提供2小时深度培训，重点讲解 Dashboard 中 HSK 风险预警的读取与干预方法；配置符合同济课程进度的素材推送计划。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot"></div><div class="tl-line"></div></div>
-        <div class="tl-right">
-          <div class="tl-month">第 2–8 周</div>
-          <div class="tl-title">🚀 学生正式使用（试点期）</div>
-          <div class="tl-desc">学生开始日常课后跟读练习。我们每两周提供数据摘要报告，与试点教师同步班级发音进展，及时调整使用策略。教学顾问全程在线响应问题（微信响应 ≤ 4 小时）。</div>
-        </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot gold"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-period">第 4–16 周 · 运营阶段</div>
+        <div class="tl-title">🚀 全面运营 + 双周数据复盘</div>
+        <div class="tl-desc">学生开始日常课后练习。教学顾问与教师每两周进行数据复盘（30分钟），重点关注：HSK 预警学生名单 → 教师课堂定向干预 → 发音分数变化追踪。微信响应时间承诺≤4小时。</div>
       </div>
-      <div class="tl-item">
-        <div class="tl-left"><div class="tl-dot future"></div><div class="tl-line"></div></div>
-        <div class="tl-right">
-          <div class="tl-month">学期末</div>
-          <div class="tl-title">📊 效果评估 & 续约决策</div>
-          <div class="tl-desc">提供完整学期发音进步报告（可作为教学成效材料提交学院），共同评估合作效果。根据试点数据，协商下学年学院级扩大合作方案。</div>
-        </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-left"><div class="tl-dot future"></div><div class="tl-line"></div></div>
+      <div class="tl-right">
+        <div class="tl-period">学期末 · 评估阶段</div>
+        <div class="tl-title">📊 效果评估 & 战略续约</div>
+        <div class="tl-desc">提供完整学期评估报告（含：学生发音进步数据、HSK 模拟达标率变化、教师使用满意度、对比未使用班级的基准数据）。该报告可直接用于学院向上级汇报教学质量提升成效，以及评估全院铺开合作的可行性。</div>
       </div>
     </div>
   </div>
-  <div class="divider"></div>
+</div>
+<div class="divider"></div>
 
-  <!-- ── 6. 竞品对比 ── -->
-  <div class="sec">
-    <div class="sec-label">Why ShadowSpeak</div>
-    <div class="sec-title">为什么不是现有工具？</div>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>能力</th><th>Duolingo</th><th>HelloChinese</th><th>Speechling</th><th style="color:var(--brand);">ShadowSpeak</th></tr></thead>
-        <tbody>
-          <tr><td>声调级精准纠错</td><td>❌</td><td>△ 粗粒度</td><td>△ 需等待 24h</td><td style="color:var(--green);font-weight:700;">✅ 实时 · 声调/声母/韵母级</td></tr>
-          <tr><td>完整影子跟读工作流</td><td>❌</td><td>△ 仅播放</td><td>△ 部分</td><td style="color:var(--green);font-weight:700;">✅ 全流程闭环</td></tr>
-          <tr><td>发音错题本（间隔复习）</td><td>❌</td><td>❌</td><td>❌</td><td style="color:var(--green);font-weight:700;">✅ 全球首创</td></tr>
-          <tr><td>HSKK 专项模拟</td><td>❌</td><td>❌</td><td>❌</td><td style="color:var(--green);font-weight:700;">✅ 专项题库</td></tr>
-          <tr><td>教师班级 Dashboard</td><td>❌</td><td>❌</td><td>❌</td><td style="color:var(--green);font-weight:700;">✅ 完整班级管理</td></tr>
-          <tr><td>多国籍学生适配</td><td>❌</td><td>❌</td><td>△ 部分</td><td style="color:var(--green);font-weight:700;">✅ 个性化错误档案</td></tr>
-          <tr><td>中国高校机构合作</td><td>❌</td><td>❌</td><td>❌</td><td style="color:var(--green);font-weight:700;">✅ 专属定价 + 陪跑服务</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="hbox hbox-gray" style="margin-top:20px;">
-      <div class="hbox-title">关于 ShadowSpeak</div>
-      <p>ShadowSpeak 团队专注于留学生汉语口语习得科技，AI 发音评测引擎基于科大讯飞声学模型，声调判断准确率 ≥ 85%（经人工标注验证）。我们只做一件事：<strong>帮来华留学生把中文口语说准</strong>。同济大学留学生学院将是我们在国内顶尖高校的首批合作伙伴，我们承诺投入最高级别的资源支持本次合作。</p>
-    </div>
+<!-- ══ SECTION 8: FAQ ══ -->
+<div class="sec" style="padding-bottom:44px;">
+  <div class="sec-label">Key Questions · 关键问题</div>
+  <div class="sec-title">学院层面最关心的五个问题</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>问题</th><th>回答</th></tr></thead>
+      <tbody>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">这是否能计入课程要求？</td>
+          <td>是的。App 的每日练习记录（时长、分数、错题数量）可作为课外作业的量化考核依据，教师可自由设定「每周最低练习时长」等规则，Dashboard 提供合规率统计。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">AI 评测能替代 HSK 官方考试吗？</td>
+          <td>不能，也无意替代。ShadowSpeak 定位为<strong>官方考试的准备与强化工具</strong>，帮助学生在正式 HSK 考试前充分练习、识别弱点、提高通过概率。两者关系是「健身房」与「比赛」的关系。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">数据安全与学生隐私如何保障？</td>
+          <td>录音仅用于当次发音分析，分析后不在服务端永久存储；学生数据按国家数据安全法规处理，存储于境内服务器；学院可签订《数据处理协议》明确双方权责，满足教育部留学生管理相关数据合规要求。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">能与同济现有教学管理系统对接吗？</td>
+          <td>标准版支持 CSV 名单导入（与同济教务系统兼容）；深度合作阶段可探索与同济选课网（xuanke.tongji.edu.cn）的 SSO 单点登录对接，学生使用学号直接登录，无需额外注册。</td>
+        </tr>
+        <tr>
+          <td style="font-weight:700;white-space:nowrap;">如果试点效果不理想怎么办？</td>
+          <td>试点期间我们承诺：①每两周提供数据复盘，发现问题立即调整；②若学期末数据未达到预设基准指标（发音分数提升≥10%），提供第二学期免费延续直至达标；③不会自动续约，所有扩展合作由贵院主动决定。</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="divider"></div>
-
-  <!-- ── 7. FAQ ── -->
-  <div class="sec" style="padding-bottom:40px;">
-    <div class="sec-label">FAQ</div>
-    <div class="sec-title">贵院可能关心的问题</div>
-    <div class="two-col">
-      <div>
-        <h3 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;">Q：需要学校采购专用设备吗？</h3>
-        <p style="font-size:14px;">完全不需要。ShadowSpeak 支持 iOS 和 Android，学生使用自己的手机即可，学院无需任何硬件投入。</p>
-      </div>
-      <div>
-        <h3 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;">Q：AI 评测对不同母语背景学生有效吗？</h3>
-        <p style="font-size:14px;">是的。我们的评测引擎专为非母语学习者优化，在欧洲、中东、东南亚等多种母语背景的学习者测试中均有良好表现。</p>
-      </div>
-      <div>
-        <h3 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;">Q：学生录音数据如何保护？</h3>
-        <p style="font-size:14px;">录音仅用于当次发音分析，分析完成后不在服务端永久存储，符合国家数据安全法规与 GDPR 要求。数据存储在中国境内服务器。</p>
-      </div>
-      <div>
-        <h3 style="font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px;">Q：试点期间如何评估效果？</h3>
-        <p style="font-size:14px;">我们提供双维度评估：①量化指标（学生发音分数前后对比、练习频率、错题本使用率）；②教师与学生主观满意度调研，形成完整的试点评估报告。</p>
-      </div>
-    </div>
-  </div>
+</div>
 
 </div><!-- /body -->
 
-<!-- ── CTA FOOTER ── -->
+<!-- ══ FOOTER CTA ══ -->
 <div class="cta-footer">
-  <div class="cf-title">期待与同济大学留学生学院携手合作</div>
-  <div class="cf-sub">申请本学期免费试点 · 1–2 个班级起步 · 全程教学顾问陪跑 · 零风险承诺</div>
+  <div class="cf-title">共同构建同济留学生汉语学业保障体系</div>
+  <div class="cf-sub">这不是一次软件采购，而是围绕同济留学生培养质量提升的战略合作。<br>我们希望成为同济留学生学院在汉语学业保障领域的长期数字化合作伙伴。</div>
   <div class="cf-btns">
-    <div class="cf-btn cf-btn-primary">📧 发送合作申请</div>
-    <div class="cf-btn cf-btn-secondary">📅 预约校内演示</div>
+    <div class="cf-btn cf-primary">📅 申请战略合作会议</div>
+    <div class="cf-btn cf-secondary">📄 下载完整方案PDF</div>
   </div>
-  <div class="cf-contact">
-    partnership@shadowspeak.ai &nbsp;|&nbsp; www.shadowspeak.ai &nbsp;|&nbsp; 微信：ShadowSpeakAI
+  <div class="cf-divider"></div>
+  <div class="cf-contact">partnership@shadowspeak.ai &nbsp;·&nbsp; www.shadowspeak.ai &nbsp;·&nbsp; 微信公众号：ShadowSpeakAI</div>
+  <div class="cf-appendix">
+    <div class="ca-title">政策依据文件索引</div>
+    <ul class="ca-list">
+      <li>同济大学2026年国际学生硕士招生简章（中文授课）</li>
+      <li>同济大学2024年国际学生本科招生简章</li>
+      <li>同济大学留学生预科学籍与管理条例（第35条）</li>
+      <li>同济大学外国留学生在华学习管理规定</li>
+      <li>教育部《学校招收和培养国际学生管理办法》（2017）</li>
+    </ul>
   </div>
 </div>
 
